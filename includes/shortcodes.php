@@ -10,6 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Compare shortcode callback
+ *
+ * @param $atts
+ *
+ * @since 0.1
+ * @return string
+ */
 function edd_compare_products_shortcode( $atts ) {
 
 	global $edd_options;
@@ -25,20 +33,23 @@ function edd_compare_products_shortcode( $atts ) {
 
 		// Loop over the array of objects and display the results
 		if ( $download_ids ) {
-			$output = '';
+			$output = '<div class="edd-compare-products">';
+			$results = '';
 			foreach ( $download_ids as $download_id ) {
 				$download = edd_get_download( $download_id );
-				$output .= ( is_object( $download ) ) ? $download->post_title : '';
+				if ( is_object( $download ) ) {
+					$results .= $download->post_title;
+				}
 			}
-			if ( empty( $output ) ) {
-				$output = 'No downloads defined.';
+			$output .= '</div>';
+			if ( empty( $results ) ) {
+				$output = 'IDs do not match any downloads.';
 			}
-
 		} else {
-			$output = 'No downloads found.';
+			$output = 'No numerical IDs provided.';
 		}
 	} else {
-		$output = 'Zero downloads found.';
+		$output = 'No download IDs provided.';
 	}
 
 	return $output;

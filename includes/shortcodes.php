@@ -14,14 +14,14 @@ function edd_compare_products_shortcode( $atts ) {
 
 	if ( ! empty( $_GET['compare'] ) ) {
 		$download_ids = array_filter( explode( ',', $_GET['compare'] ), 'is_numeric' );
-		$downloads    = array();
 
 		if ( $download_ids ) {
 			$output = '';
 			foreach ( $download_ids as $download_id ) {
 				$download = edd_get_download( $download_id );
-				$output .= $download->post_title;
+				$output .= ( is_object( $download ) ) ? $download->post_title : '';
 			}
+
 			return $output;
 		} else {
 			return 'No downloads to compare (no numeric values).';

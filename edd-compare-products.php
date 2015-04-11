@@ -136,10 +136,23 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			$new_settings = array(
 				array(
 					'id'   => 'edd_compare_products_settings',
-					'name' => '<strong>' . __( 'EDD Compare Products Settings' ) . '</strong>',
+					'name' => '<strong>' . __( 'Compare Products Settings' ) . '</strong>',
 					'desc' => __( 'Configure EDD Compare Products Settings' ),
 					'type' => 'header',
-				)
+				),
+				array(
+					'id' 		=> 'edd-compare-products-page',
+					'name' 		=> __('Default Comparison Page', 'edd-compare-products'),
+					'desc' 		=> __('Which Page contains the [edd_compare_products] shortcode?', 'edd-compare-products'),
+					'type' 		=> 'select',
+					'options' 	=> edd_get_pages(),
+				),
+				array(
+					'id' 		=> 'edd-compare-products-default-ids',
+					'name' 		=> __('Default Downloads', 'edd-compare-products'),
+					'desc' 		=> __('Comma separated list of download IDs that will be used if none are otherwise specified.', 'edd-compare-products'),
+					'type' 		=> 'text',
+				),
 			);
 
 			return array_merge( $settings, $new_settings );

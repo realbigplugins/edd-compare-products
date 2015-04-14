@@ -75,6 +75,7 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/functions.php';
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/shortcodes.php';
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/widgets.php';
+			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/settings.php';
 		}
 
 		/**
@@ -86,11 +87,17 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 */
 		private function hooks() {
 			// Register settings
-			add_filter( 'edd_settings_extensions', array( $this, 'settings' ), 1 );
+			add_filter( 'edd_settings_extensions', 'edd_compare_products_settings', 1 );
+			// Sanitize meta fields settings
+			add_filter( 'edd_settings_extensions_sanitize', 'edd_compare_settings_sanitize_meta_fields' );
 			// Handle licensing
 			if ( class_exists( 'EDD_License' ) ) {
 				$license = new EDD_License( __FILE__, 'EDD Compare Products', EDD_COMPARE_PRODUCTS_VER, 'Kyle Maurer' );
 			}
+			add_action( 'admin_notices', function() {
+				//global $edd_options;
+				// var_dump();
+			});
 		}
 
 		/**
@@ -122,41 +129,7 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			}
 		}
 
-		/**
-		 * Add settings
-		 *
-		 * @access      public
-		 * @since       0.1
-		 *
-		 * @param       array $settings The existing EDD settings array
-		 *
-		 * @return      array The modified EDD settings array
-		 */
-		public function settings( $settings ) {
-			$new_settings = array(
-				array(
-					'id'   => 'edd_compare_products_settings',
-					'name' => '<strong>' . __( 'Compare Products Settings' ) . '</strong>',
-					'desc' => __( 'Configure EDD Compare Products Settings' ),
-					'type' => 'header',
-				),
-				array(
-					'id' 		=> 'edd-compare-products-page',
-					'name' 		=> __('Default Comparison Page', 'edd-compare-products'),
-					'desc' 		=> __('Which Page contains the [edd_compare_products] shortcode?', 'edd-compare-products'),
-					'type' 		=> 'select',
-					'options' 	=> edd_get_pages(),
-				),
-				array(
-					'id' 		=> 'edd-compare-products-default-ids',
-					'name' 		=> __('Default Downloads', 'edd-compare-products'),
-					'desc' 		=> __('Comma separated list of download IDs that will be used if none are otherwise specified.', 'edd-compare-products'),
-					'type' 		=> 'text',
-				),
-			);
 
-			return array_merge( $settings, $new_settings );
-		}
 	}
 } // End if class_exists check
 /**

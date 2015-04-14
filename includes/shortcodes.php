@@ -41,10 +41,11 @@ function edd_compare_products_shortcode( $atts ) {
 					$results .= $download->post_title;
 				}
 			}
-			$output .= '</div>';
+			$output .= $output . $results;
 			if ( empty( $results ) ) {
-				$output = 'IDs do not match any downloads.';
+				$output .= 'IDs do not match any downloads.';
 			}
+			$output .= '</div>';
 		} else {
 			$output = 'No numerical IDs provided.';
 		}

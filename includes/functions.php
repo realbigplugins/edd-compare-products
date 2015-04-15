@@ -7,8 +7,3 @@
  */
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
-
-function just_testing() {
-
-	return array( 'id' => 'something', 'name' => 'blaaaaa', 'type' => 'text', 'description' => 'stuff');
-}

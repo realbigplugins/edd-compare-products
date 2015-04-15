@@ -78,8 +78,11 @@ function edd_compare_products_get_meta_fields() {
 	$download = get_posts( 'post_type=download&posts_per_page=1' );
 	$fields = get_post_custom_keys( $download[0]->ID );
 	$data = array();
-	foreach ( $fields as $key ) {
-		$data[] = $key;
+	foreach ( $fields as $value ) {
+		$type = get_post_meta( $download[0]->ID, $value, true );
+		if ( is_string( $type ) ) {
+			$data[$value] = $value;
+		}
 	}
 	return $data;
 }
@@ -137,8 +140,16 @@ function edd_compare_products_settings( $settings ) {
 		array(
 			'id' 		=> 'edd-compare-products-default-ids',
 			'name' 		=> __('Default Downloads', 'edd-compare-products'),
-			'desc' 		=> __('Comma separated list of download IDs that will be used if none are otherwise specified.', 'edd-compare-products'),
+			'desc' 		=> __('Comma separated list of download IDs.', 'edd-compare-products'),
 			'type' 		=> 'text',
+		),
+		array(
+			'id' 		=> 'edd-compare-products-default-style',
+			'name' 		=> __('Default Table Style', 'edd-compare-products'),
+			'type' 		=> 'select',
+			'options' => array(
+				'h-scroll' => 'Horizontal Scroll',
+			),
 		),
 		array(
 			'id' => 'edd_compare_products_meta_fields',

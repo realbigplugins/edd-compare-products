@@ -33,19 +33,42 @@ function edd_compare_products_shortcode( $atts ) {
 
 		// Loop over the array of objects and display the results
 		if ( $download_ids ) {
-			$output = '<div class="edd-compare-products">';
+			$output = '<div class="edd-compare-products"><table>';
 			$results = '';
+			// Header row
+			$output .= '<thead><tr><th> </th>';
 			foreach ( $download_ids as $download_id ) {
 				$download = edd_get_download( $download_id );
 				if ( is_object( $download ) ) {
-					$results .= $download->post_title;
+					$results .= '<th>' . $download->post_title . '</th>';
 				}
 			}
-			$output .= $output . $results;
+			$output = $output . $results;
+			$output .= '</tr></thead>';
+
+			$output .= '<tbody>';
+			// Rows
+			$fields = edd_compare_get_meta_fields();
+			if ( $fields ) {
+				foreach ( $fields as $field ) {
+					$output .= '<tr>';
+					$output .= '<td>' . $field['label'] . '</td>';
+					foreach ( $download_ids as $download_id ) {
+						$download = edd_get_download( $download_id );
+						if ( is_object( $download ) ) {
+							$value = get_post_meta( $download_id, $field['meta_field'], true );
+							$output .= '<td>' . $value . '</td>';
+						}
+					}
+					$output .= '</tr>';
+				}
+			}
+			$output .= '</tbody>';
+
 			if ( empty( $results ) ) {
 				$output .= 'IDs do not match any downloads.';
 			}
-			$output .= '</div>';
+			$output .= '</table></div>';
 		} else {
 			$output = 'No numerical IDs provided.';
 		}

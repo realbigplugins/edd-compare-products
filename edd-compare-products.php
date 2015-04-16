@@ -90,6 +90,10 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			add_filter( 'edd_settings_extensions', 'edd_compare_products_settings', 1 );
 			// Sanitize meta fields settings
 			add_filter( 'edd_settings_extensions_sanitize', 'edd_compare_settings_sanitize_meta_fields' );
+			// Register widget
+			add_action( 'widgets_init', 'register_edd_compare_products_widget' );
+			// Add compare button to lists of downloads
+			add_filter( 'edd_purchase_download_form', 'edd_compare_products_add_compare_button', 10, 2 );
 			// Handle licensing
 			if ( class_exists( 'EDD_License' ) ) {
 				$license = new EDD_License( __FILE__, 'EDD Compare Products', EDD_COMPARE_PRODUCTS_VER, 'Kyle Maurer' );

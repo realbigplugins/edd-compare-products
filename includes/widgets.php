@@ -10,10 +10,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+function register_edd_compare_products_widget() {
+	register_widget( 'EDD_Compare_Products_Widget' );
+}
 
-/**
- * Adds Foo_Widget widget.
- */
 class EDD_Compare_Products_Widget extends WP_Widget {
 
 	/**
@@ -21,9 +21,9 @@ class EDD_Compare_Products_Widget extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-			'foo_widget', // Base ID
-			__( 'Widget Title', 'text_domain' ), // Name
-			array( 'description' => __( 'A Foo Widget', 'text_domain' ), ) // Args
+			'edd_compare_products',
+			__( 'Compare Products', 'edd-compare-products' ),
+			array( 'description' => __( 'Allows customers to select products and generate a comparison.', 'edd-compare-products' ), )
 		);
 	}
 
@@ -40,7 +40,7 @@ class EDD_Compare_Products_Widget extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
-		echo __( 'Hello, World!', 'text_domain' );
+		echo __( 'Hello, World!', 'edd-compare-products' );
 		echo $args['after_widget'];
 	}
 
@@ -52,7 +52,7 @@ class EDD_Compare_Products_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New title', 'text_domain' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'New title', 'edd-compare-products' );
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>

@@ -94,6 +94,8 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			add_action( 'widgets_init', 'register_edd_compare_products_widget' );
 			// Add compare button to lists of downloads
 			add_filter( 'edd_purchase_download_form', 'edd_compare_products_add_compare_button', 10, 2 );
+			// Add URL container in footer
+			add_action( 'wp_footer', 'edd_compare_products_url' );
 			// Handle licensing
 			if ( class_exists( 'EDD_License' ) ) {
 				$license = new EDD_License( __FILE__, 'EDD Compare Products', EDD_COMPARE_PRODUCTS_VER, 'Kyle Maurer' );

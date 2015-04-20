@@ -84,6 +84,7 @@ function edd_compare_products_get_meta_fields() {
 			$data[$value] = $value;
 		}
 	}
+	$data['thumbnail'] = 'thumbnail';
 	return $data;
 }
 
@@ -148,7 +149,7 @@ function edd_compare_products_settings( $settings ) {
 			'name' 		=> __('Default Table Style', 'edd-compare-products'),
 			'type' 		=> 'select',
 			'options' => array(
-				'h-scroll' => 'Horizontal Scroll',
+				'edd-compare-h-scroll' => 'Horizontal Scroll',
 			),
 		),
 		array(

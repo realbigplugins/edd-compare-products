@@ -1,3 +1,15 @@
+/* Product list */
 .edd-compare-url {
     display: none;
+}
+/* Comparison page */
+.edd-compare-products table {
+    display: block;
+}
+.edd-compare-products td:first-child, .edd-compare-products th:first-child {
+    background-color: #f7f7f7;
+}
+/* Table style options */
+.edd-compare-h-scroll {
+    overflow-x: scroll;
 }

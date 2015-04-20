@@ -33,10 +33,10 @@ function edd_compare_products_shortcode( $atts ) {
 
 		// Loop over the array of objects and display the results
 		if ( $download_ids ) {
-			$output = '<div class="edd-compare-products"><table>';
+			$output = '<div class="edd-compare-products ' . $edd_options["edd-compare-products-default-style"] . '"><table>';
 			$results = '';
 			// Header row
-			$output .= '<thead><tr><th> </th>';
+			$output .= '<thead><tr><th>Title</th>';
 			foreach ( $download_ids as $download_id ) {
 				$download = edd_get_download( $download_id );
 				if ( is_object( $download ) ) {
@@ -56,7 +56,11 @@ function edd_compare_products_shortcode( $atts ) {
 					foreach ( $download_ids as $download_id ) {
 						$download = edd_get_download( $download_id );
 						if ( is_object( $download ) ) {
-							$value = get_post_meta( $download_id, $field['meta_field'], true );
+							if ( $field['meta_field'] == 'thumbnail' ) {
+								$value = get_the_post_thumbnail( $download_id, 'thumbnail' );
+							} else {
+								$value = get_post_meta( $download_id, $field['meta_field'], true );
+							}
 							$output .= '<td>' . $value . '</td>';
 						}
 					}

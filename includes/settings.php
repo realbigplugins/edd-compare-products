@@ -1,10 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kylemaurer
- * Date: 4/12/15
- * Time: 3:52 PM
- */
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 function edd_compare_products_meta_fields_callback( $args ) {
 	global $edd_options;
@@ -157,6 +155,18 @@ function edd_compare_products_settings( $settings ) {
 			'name' => '<strong>' . __( 'Meta fields', 'edd-compare-products' ) . '</strong>',
 			'desc' => __( 'Define default meta fields to show in comparison table.', 'edd-compare-products' ),
 			'type' => 'compare_products_meta_fields'
+		),
+		array(
+			'id' 		=> 'edd-compare-products-button-text',
+			'name' 		=> __('Compare Button Text', 'edd-compare-products'),
+			'desc' 		=> __('Default is "Compare".', 'edd-compare-products'),
+			'type' 		=> 'text',
+		),
+		array(
+			'id' 		=> 'edd-compare-products-go-button-text',
+			'name' 		=> __('Go Button Text', 'edd-compare-products'),
+			'desc' 		=> __('After someone has selected the items they would like to compare, the buttons display a message. The default is "Go to Comparison".', 'edd-compare-products'),
+			'type' 		=> 'text',
 		),
 	);
 

@@ -2,12 +2,13 @@
 /*
 Plugin Name: Easy Digital Downloads - Compare Products
 Plugin URI: http://realbigplugins.com
-Description: A brief description of the Plugin.
+Description: Allows helpful product comparison tables to be easily generated.
 Version: 0.1
 Author: Kyle Maurer
-Author URI: http://kyleblog.net
+Author URI: http://realbigmarketing.com/staff/kyle
 License: GPL2
 Text Domain: edd-compare-products
+Domain Path: languages
 */
 
 // Exit if accessed directly
@@ -74,7 +75,6 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/scripts.php';
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/functions.php';
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/shortcodes.php';
-			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/widgets.php';
 			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/settings.php';
 		}
 
@@ -90,8 +90,6 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			add_filter( 'edd_settings_extensions', 'edd_compare_products_settings', 1 );
 			// Sanitize meta fields settings
 			add_filter( 'edd_settings_extensions_sanitize', 'edd_compare_settings_sanitize_meta_fields' );
-			// Register widget
-			add_action( 'widgets_init', 'register_edd_compare_products_widget' );
 			// Add compare button to lists of downloads
 			add_filter( 'edd_purchase_download_form', 'edd_compare_products_add_compare_button', 10, 2 );
 			// Add URL container in footer
@@ -100,10 +98,6 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			if ( class_exists( 'EDD_License' ) ) {
 				$license = new EDD_License( __FILE__, 'EDD Compare Products', EDD_COMPARE_PRODUCTS_VER, 'Kyle Maurer' );
 			}
-			add_action( 'admin_notices', function() {
-				//global $edd_options;
-				// var_dump();
-			});
 		}
 
 		/**
@@ -144,11 +138,6 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
  *
  * @since       0.1
  * @return      \EDD_Compare_Products The one true EDD_Compare_Products
- *
- * @todo        Inclusion of the activation code below isn't mandatory, but
- *              can prevent any number of errors, including fatal errors, in
- *              situations where your extension is activated but EDD is not
- *              present.
  */
 function EDD_Compare_Products_load() {
 	if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
@@ -165,17 +154,3 @@ function EDD_Compare_Products_load() {
 }
 
 add_action( 'plugins_loaded', 'EDD_Compare_Products_load' );
-/**
- * The activation hook is called outside of the singleton because WordPress doesn't
- * register the call from within the class, since we are preferring the plugins_loaded
- * hook for compatibility, we also can't reference a function inside the plugin class
- * for the activation function. If you need an activation function, put it here.
- *
- * @since       0.1
- * @return      void
- */
-function edd_compare_products_activation() {
-	/* Activation functions here */
-}
-
-register_activation_hook( __FILE__, 'edd_compare_products_activation' );

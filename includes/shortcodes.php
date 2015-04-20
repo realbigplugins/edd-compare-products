@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kylemaurer
- * Date: 4/8/15
- * Time: 6:14 PM
- */
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,14 +27,14 @@ function edd_compare_products_shortcode( $atts ) {
 
 		// Loop over the array of objects and display the results
 		if ( $download_ids ) {
-			$output = '<div class="edd-compare-products ' . $edd_options["edd-compare-products-default-style"] . '"><table>';
+			$output  = '<div class="edd-compare-products ' . $edd_options["edd-compare-products-default-style"] . '"><table>';
 			$results = '';
 			// Header row
 			$output .= '<thead><tr><th>Title</th>';
 			foreach ( $download_ids as $download_id ) {
 				$download = edd_get_download( $download_id );
 				if ( is_object( $download ) ) {
-					$results .= '<th>' . $download->post_title . '</th>';
+					$results .= '<th><a href="' . get_permalink( $download->ID ) . '">' . $download->post_title . '</a></th>';
 				}
 			}
 			$output = $output . $results;
@@ -52,7 +46,9 @@ function edd_compare_products_shortcode( $atts ) {
 			if ( $fields ) {
 				foreach ( $fields as $field ) {
 					$output .= '<tr>';
-					$output .= '<td>' . $field['label'] . '</td>';
+					$output .= '<td>';
+					$output .= ( $field['label'] ) ? $field['label'] : $field['meta_field'];
+					$output .= '</td>';
 					foreach ( $download_ids as $download_id ) {
 						$download = edd_get_download( $download_id );
 						if ( is_object( $download ) ) {

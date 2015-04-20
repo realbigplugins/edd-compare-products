@@ -8,7 +8,7 @@ function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 
 	global $edd_options;
 	$page = $edd_options['edd-compare-products-page'];
-	if ( ! $page || is_single() ) {
+	if ( ! $page || is_single() || is_page( $edd_options['edd-compare-products-page'] ) ) {
 		return $purchase_form;
 	}
 

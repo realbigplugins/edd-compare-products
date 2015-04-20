@@ -44,6 +44,7 @@ function edd_compare_products_shortcode( $atts ) {
 			// Rows
 			$fields = edd_compare_get_meta_fields();
 			if ( $fields ) {
+				// Meta fields
 				foreach ( $fields as $field ) {
 					$output .= '<tr>';
 					$output .= '<td>';
@@ -62,6 +63,15 @@ function edd_compare_products_shortcode( $atts ) {
 					}
 					$output .= '</tr>';
 				}
+				// Buy button
+				$output .= '<tr><td> </td>';
+				foreach ( $download_ids as $download_id ) {
+					$download = edd_get_download( $download_id );
+					if ( is_object( $download ) ) {
+						$output .= '<td>' . edd_get_purchase_link( array( 'download_id' => $download_id ) ) . '</td>';
+					}
+				}
+				$output .= '</tr>';
 			}
 			$output .= '</tbody>';
 

@@ -4,6 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * When applicable, add the compare button after the EDD purchase form button
+ *
+ * @param $purchase_form
+ * @param $args
+ *
+ * @return string
+ */
 function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 
 	if ( edd_compare_products_get_compare_url() == false || is_single() ) {
@@ -26,6 +34,11 @@ function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 	return $purchase_form . $button;
 }
 
+/**
+ * Get the URL of the default comparison page defined in settings
+ *
+ * @return bool|string
+ */
 function edd_compare_products_get_compare_url() {
 	global $edd_options;
 	if ( isset( $edd_options['edd-compare-products-page'] ) ) {
@@ -36,6 +49,9 @@ function edd_compare_products_get_compare_url() {
 	return $url;
 }
 
+/**
+ * Creates the URL which customers will go to after selecting downloads to compare
+ */
 function edd_compare_products_url() {
 	echo '<div id="edd-compare-url">' . edd_compare_products_get_compare_url() . '?compare=</div>';
 }

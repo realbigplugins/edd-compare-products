@@ -3,7 +3,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+/**
+ * Display extension's settings
+ *
+ * @param $args
+ */
 function edd_compare_products_meta_fields_callback( $args ) {
 	global $edd_options;
 	$fields = edd_compare_get_meta_fields();
@@ -72,6 +76,13 @@ function edd_compare_products_meta_fields_callback( $args ) {
 	echo ob_get_clean();
 }
 
+/**
+ * Remove unnecessary default meta fields and any that store non-strings
+ *
+ * @param $fields
+ *
+ * @return mixed
+ */
 function edd_compare_remove_some_meta_fields( $fields ) {
 	$download = get_posts( 'post_type=download&posts_per_page=1' );
 	$remove = array(
@@ -89,6 +100,12 @@ function edd_compare_remove_some_meta_fields( $fields ) {
 	}
 	return $fields;
 }
+
+/**
+ * Returns array of all the meta fields we want
+ *
+ * @return mixed
+ */
 function edd_compare_products_get_meta_fields() {
 
 	global $wpdb;
@@ -111,7 +128,7 @@ function edd_compare_products_get_meta_fields() {
 	}
 
 	$data['thumbnail'] = 'thumbnail';
-	//set_transient('edd_compare_meta_keys', $meta_keys, 60*60*24); // 1 Day Expiration
+
 	return edd_compare_remove_some_meta_fields( $data );
 }
 

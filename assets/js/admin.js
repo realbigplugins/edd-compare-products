@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
         },
 
         fields: function () {
-            // Insert new tax rate row
+            // Insert new field row
             $('#edd_add_compare_field').on('click', function() {
                 var row = $('#edd_compare_fields tr:last');
                 var clone = row.clone();
@@ -25,7 +25,7 @@ jQuery(document).ready(function ($) {
                 return false;
             });
 
-            // Remove tax row
+            // Remove field row
             $('body').on('click', '#edd_compare_fields .edd_remove_compare_field', function () {
                 if (confirm("Are you sure you want to remove this field?")) {
                     var count = $('#edd_compare_fields tr:visible').length;

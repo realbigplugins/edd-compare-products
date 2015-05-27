@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 function edd_compare_products_shortcode( $atts ) {
 
 	global $edd_options;
-
+	$defaults = isset( $edd_options['edd-compare-products-default-ids'] ) ? $edd_options['edd-compare-products-default-ids'] : array();
 	$atts = shortcode_atts( array(
-		'ids' => isset( $_GET['compare'] ) ? $_GET['compare'] : $edd_options['edd-compare-products-default-ids'],
+		'ids' => isset( $_GET['compare'] ) ? $_GET['compare'] : $defaults,
 	), $atts );
 
 	if ( $atts['ids'] ) {

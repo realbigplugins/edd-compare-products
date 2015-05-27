@@ -6,9 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 
+	if ( edd_compare_products_get_compare_url() == false || is_single() ) {
+		return $purchase_form;
+	}
+
 	global $edd_options;
 	$page = $edd_options['edd-compare-products-page'];
-	if ( ! $page || is_single() || is_page( $edd_options['edd-compare-products-page'] ) ) {
+	if ( is_page( $page ) ) {
 		return $purchase_form;
 	}
 
@@ -24,8 +28,11 @@ function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 
 function edd_compare_products_get_compare_url() {
 	global $edd_options;
-	$url = get_permalink( $edd_options['edd-compare-products-page'] );
-
+	if ( isset( $edd_options['edd-compare-products-page'] ) ) {
+		$url = get_permalink( $edd_options['edd-compare-products-page'] );
+	} else {
+		$url = false;
+	}
 	return $url;
 }
 

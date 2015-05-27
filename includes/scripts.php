@@ -15,7 +15,7 @@ function edd_compare_products_admin_scripts( $hook ) {
 	global $edd_settings_page, $post_type;
 	if( $hook == $edd_settings_page ) {
 		wp_enqueue_script( 'edd_compare_products_admin_js', EDD_COMPARE_PRODUCTS_URL . 'assets/js/admin.js' );
-		//wp_enqueue_style( 'edd_compare_products_admin_css', EDD_COMPARE_PRODUCTS_URL . 'assets/css/admin.css' );
+		wp_enqueue_style( 'edd_compare_products_admin_css', EDD_COMPARE_PRODUCTS_URL . 'assets/css/admin.css' );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'edd_compare_products_admin_scripts', 100 );

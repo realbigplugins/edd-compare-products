@@ -16,8 +16,8 @@ function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 	$go_text = ( array_key_exists( 'edd-compare-products-go-button-text', $edd_options ) && ! empty( $edd_options['edd-compare-products-go-button-text'] ) ) ? $edd_options['edd-compare-products-go-button-text'] : 'Go to Comparison';
 
 	$class  = implode( ' ', array( $args['style'], $args['color'], trim( $args['class'] ) ) );
-	$button = '<button class="edd-submit button ' . esc_attr( $class ) . '" id="edd-compare-button-' . $args["download_id"] . '" onclick="eddCompareURL(' . $args["download_id"] . ')">' . esc_attr( $text ) . '</button>';
-	$button .= '<a class="edd-submit edd-compare-go button ' . esc_attr( $class ) . '" href="" id="edd-compare-go-button-' . $args["download_id"] . '" style="display:none">' . esc_attr( $go_text ) . '</a>';
+	$button = '<button class="edd-submit button edd-compare-button ' . esc_attr( $class ) . '" id="edd-compare-button-' . $args["download_id"] . '" onclick="eddCompareURL(' . $args["download_id"] . ')">' . esc_attr( $text ) . '</button>';
+	$button .= '<a class="edd-submit edd-compare-go button edd-compare-button ' . esc_attr( $class ) . '" href="" id="edd-compare-go-button-' . $args["download_id"] . '" style="display:none">' . esc_attr( $go_text ) . '</a>';
 
 	return $purchase_form . $button;
 }

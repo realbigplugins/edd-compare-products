@@ -1,6 +1,10 @@
 /* Product list */
-.edd-compare-url {
+#edd-compare-url {
     display: none;
+    visibility: hidden;
+}
+.edd-compare-button {
+    margin-top: 5px;
 }
 /* Comparison page */
 .edd-compare-products table {

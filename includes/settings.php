@@ -72,18 +72,47 @@ function edd_compare_products_meta_fields_callback( $args ) {
 	echo ob_get_clean();
 }
 
-function edd_compare_products_get_meta_fields() {
+function edd_compare_remove_some_meta_fields( $fields ) {
 	$download = get_posts( 'post_type=download&posts_per_page=1' );
-	$fields = get_post_custom_keys( $download[0]->ID );
-	$data = array();
-	foreach ( $fields as $value ) {
-		$type = get_post_meta( $download[0]->ID, $value, true );
-		if ( is_string( $type ) ) {
-			$data[$value] = $value;
+	$remove = array(
+		'_edit_lock',
+		'_edit_last',
+		'_thumbnail_id',
+		'_variable_pricing',
+		'_edd_default_price_id',
+	);
+	foreach ( $fields as $field ) {
+		$type = get_post_meta( $download[0]->ID, $field, true );
+		if ( in_array( $field, $remove ) || ! is_string( $type ) ) {
+			unset( $fields[$field] );
 		}
 	}
+	return $fields;
+}
+function edd_compare_products_get_meta_fields() {
+
+	global $wpdb;
+	$post_type = 'download';
+	$query = "
+        SELECT DISTINCT($wpdb->postmeta.meta_key)
+        FROM $wpdb->posts
+        LEFT JOIN $wpdb->postmeta
+        ON $wpdb->posts.ID = $wpdb->postmeta.post_id
+        WHERE $wpdb->posts.post_type = '%s'
+        AND $wpdb->postmeta.meta_key != ''
+        AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9].+$)'
+        AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'
+    ";
+	$meta_keys = $wpdb->get_col($wpdb->prepare($query, $post_type));
+
+	$data = array();
+	foreach ( $meta_keys as $value ) {
+			$data[$value] = $value;
+	}
+
 	$data['thumbnail'] = 'thumbnail';
-	return $data;
+	//set_transient('edd_compare_meta_keys', $meta_keys, 60*60*24); // 1 Day Expiration
+	return edd_compare_remove_some_meta_fields( $data );
 }
 
 /**

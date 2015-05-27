@@ -9,7 +9,7 @@ function edd_compare_products_meta_fields_callback( $args ) {
 	$fields = edd_compare_get_meta_fields();
 	ob_start(); ?>
 	<p><?php echo $args['desc']; ?></p>
-	<table id="edd_tax_rates" class="wp-list-table widefat fixed posts">
+	<table id="edd_compare_fields" class="wp-list-table widefat fixed posts">
 		<thead>
 		<tr>
 			<th scope="col" class="edd_compare_fields"><?php _e( 'Fields', 'edd-compare-products' ); ?></th>
@@ -38,7 +38,7 @@ function edd_compare_products_meta_fields_callback( $args ) {
 						<input type="text" name="meta_fields[<?php echo $key; ?>][label]" value="<?php echo $field['label']; ?>"/>
 					</td>
 					<td>
-						<span class="edd_remove_tax_rate button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span>
+						<span class="edd_remove_compare_field button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span>
 					</td>
 				</tr>
 			<?php endforeach; ?>
@@ -61,12 +61,12 @@ function edd_compare_products_meta_fields_callback( $args ) {
 						'name'             => 'meta_fields[0][label]'
 					) ); ?>
 				</td>
-				<td><span class="edd_remove_tax_rate button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span></td>
+				<td><span class="edd_remove_compare_field button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span></td>
 			</tr>
 		<?php endif; ?>
 	</table>
 	<p>
-		<span class="button-secondary" id="edd_add_tax_rate"><?php _e( 'Add Field', 'edd-compare-products' ); ?></span>
+		<span class="button-secondary" id="edd_add_compare_field"><?php _e( 'Add Field', 'edd-compare-products' ); ?></span>
 	</p>
 	<?php
 	echo ob_get_clean();

@@ -21,8 +21,8 @@ function edd_compare_products_meta_fields_callback( $args ) {
 			<th scope="col"><?php _e( 'Remove', 'edd-compare-products' ); ?></th>
 		</tr>
 		</thead>
-		<?php if( ! empty( $fields ) ) : ?>
-			<?php foreach( $fields as $key => $field ) : ?>
+		<?php if ( ! empty( $fields ) ) : ?>
+			<?php foreach ( $fields as $key => $field ) : ?>
 				<tr>
 					<td class="edd_compare_fields">
 						<?php
@@ -34,15 +34,17 @@ function edd_compare_products_meta_fields_callback( $args ) {
 							'show_option_none' => false,
 							'class'            => 'edd-select edd-compare-meta_field',
 							'chosen'           => false,
-							'placeholder' => __( 'Choose a meta_field', 'edd-compare-products' )
+							'placeholder'      => __( 'Choose a meta_field', 'edd-compare-products' )
 						) );
 						?>
 					</td>
 					<td class="edd_compare_meta_field_label">
-						<input type="text" name="meta_fields[<?php echo $key; ?>][label]" value="<?php echo $field['label']; ?>"/>
+						<input type="text" name="meta_fields[<?php echo $key; ?>][label]"
+						       value="<?php echo $field['label']; ?>"/>
 					</td>
 					<td>
-						<span class="edd_remove_compare_field button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span>
+						<span
+							class="edd_remove_compare_field button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span>
 					</td>
 				</tr>
 			<?php endforeach; ?>
@@ -57,20 +59,23 @@ function edd_compare_products_meta_fields_callback( $args ) {
 						'show_option_none' => false,
 						'class'            => 'edd-select edd-compare-meta_field',
 						'chosen'           => false,
-						'placeholder' => __( 'Choose a meta_field', 'edd-compare-products' )
+						'placeholder'      => __( 'Choose a meta_field', 'edd-compare-products' )
 					) ); ?>
 				</td>
 				<td class="edd_compare_field_label">
 					<?php echo EDD()->html->text( array(
-						'name'             => 'meta_fields[0][label]'
+						'name' => 'meta_fields[0][label]'
 					) ); ?>
 				</td>
-				<td><span class="edd_remove_compare_field button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span></td>
+				<td><span
+						class="edd_remove_compare_field button-secondary"><?php _e( 'Remove Field', 'edd-compare-products' ); ?></span>
+				</td>
 			</tr>
 		<?php endif; ?>
 	</table>
 	<p>
-		<span class="button-secondary" id="edd_add_compare_field"><?php _e( 'Add Field', 'edd-compare-products' ); ?></span>
+		<span class="button-secondary"
+		      id="edd_add_compare_field"><?php _e( 'Add Field', 'edd-compare-products' ); ?></span>
 	</p>
 	<?php
 	echo ob_get_clean();
@@ -85,19 +90,26 @@ function edd_compare_products_meta_fields_callback( $args ) {
  */
 function edd_compare_remove_some_meta_fields( $fields ) {
 	$download = get_posts( 'post_type=download&posts_per_page=1' );
-	$remove = array(
+	$remove   = array(
 		'_edit_lock',
 		'_edit_last',
 		'_thumbnail_id',
 		'_variable_pricing',
 		'_edd_default_price_id',
 	);
-	foreach ( $fields as $field ) {
-		$type = get_post_meta( $download[0]->ID, $field, true );
-		if ( in_array( $field, $remove ) || ! is_string( $type ) ) {
-			unset( $fields[$field] );
+	if ( ! empty( $download ) ) {
+		foreach ( $fields as $field ) {
+			$type = get_post_meta( $download[0]->ID, $field, true );
+			// If any of those goofy keys above exist or any new ones that don't return strings, ditch them!
+			if ( in_array( $field, $remove ) || ! is_string( $type ) ) {
+				unset( $fields[ $field ] );
+			}
 		}
+	} else {
+		// No downloads published so....
+		$fields = array( '0' => '-- No fields exist --' );
 	}
+
 	return $fields;
 }
 
@@ -110,7 +122,7 @@ function edd_compare_products_get_meta_fields() {
 
 	global $wpdb;
 	$post_type = 'download';
-	$query = "
+	$query     = "
         SELECT DISTINCT($wpdb->postmeta.meta_key)
         FROM $wpdb->posts
         LEFT JOIN $wpdb->postmeta
@@ -120,28 +132,29 @@ function edd_compare_products_get_meta_fields() {
         AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9].+$)'
         AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'
     ";
-	$meta_keys = $wpdb->get_col($wpdb->prepare($query, $post_type));
+	$meta_keys = $wpdb->get_col( $wpdb->prepare( $query, $post_type ) );
 
-	$data = array();
+	$fields = array();
 	foreach ( $meta_keys as $value ) {
-			$data[$value] = $value;
+		$fields[ $value ] = $value;
 	}
 
-	$data['thumbnail'] = 'thumbnail';
+	$fields['thumbnail'] = 'thumbnail';
 
-	return edd_compare_remove_some_meta_fields( $data );
+	return edd_compare_remove_some_meta_fields( $fields );
 }
 
 /**
  * Sanitize meta fields
  *
  * @param $input
+ *
  * @since 0.1
  * @return mixed
  */
 function edd_compare_settings_sanitize_meta_fields( $input ) {
 
-	if( ! current_user_can( 'manage_shop_settings' ) ) {
+	if ( ! current_user_can( 'manage_shop_settings' ) ) {
 		return $input;
 	}
 
@@ -154,6 +167,7 @@ function edd_compare_settings_sanitize_meta_fields( $input ) {
 
 function edd_compare_get_meta_fields() {
 	$fields = get_option( 'edd_compare_products_meta_fields', array() );
+
 	return apply_filters( 'edd_compare_get_meta_fields', $fields );
 }
 
@@ -172,47 +186,47 @@ function edd_compare_products_settings( $settings ) {
 		array(
 			'id'   => 'edd_compare_products_settings',
 			'name' => '<strong>' . __( 'Compare Products Settings', 'edd-compare-products' ) . '</strong>',
-			'desc' => __( 'Configure EDD Compare Products Settings', 'edd-compare-products' ),
+			'desc' => '<p class="description">' . __( 'Configure EDD Compare Products Settings', 'edd-compare-products' ) . '</p>',
 			'type' => 'header',
 		),
 		array(
-			'id' 		=> 'edd-compare-products-page',
-			'name' 		=> __('Default Comparison Page', 'edd-compare-products'),
-			'desc' 		=> __('Which Page contains the [edd_compare_products] shortcode?', 'edd-compare-products'),
-			'type' 		=> 'select',
-			'options' 	=> edd_get_pages(),
+			'id'      => 'edd-compare-products-page',
+			'name'    => __( 'Default Comparison Page', 'edd-compare-products' ),
+			'desc'    => '<p class="description">' . __( 'Which Page contains the [edd_compare_products] shortcode?', 'edd-compare-products' ) . '</p>',
+			'type'    => 'select',
+			'options' => edd_get_pages(),
 		),
 		array(
-			'id' 		=> 'edd-compare-products-default-ids',
-			'name' 		=> __('Default Downloads', 'edd-compare-products'),
-			'desc' 		=> __('Comma separated list of download IDs.', 'edd-compare-products'),
-			'type' 		=> 'text',
+			'id'   => 'edd-compare-products-default-ids',
+			'name' => __( 'Default Downloads', 'edd-compare-products' ),
+			'desc' => '<p class="description">' . __( 'Comma separated list of download IDs.', 'edd-compare-products' ) . '</p>',
+			'type' => 'text',
 		),
 		array(
-			'id' 		=> 'edd-compare-products-default-style',
-			'name' 		=> __('Default Table Style', 'edd-compare-products'),
-			'type' 		=> 'select',
+			'id'      => 'edd-compare-products-default-style',
+			'name'    => __( 'Default Table Style', 'edd-compare-products' ),
+			'type'    => 'select',
 			'options' => array(
 				'edd-compare-h-scroll' => 'Horizontal Scroll',
 			),
 		),
 		array(
-			'id' => 'edd_compare_products_meta_fields',
+			'id'   => 'edd_compare_products_meta_fields',
 			'name' => '<strong>' . __( 'Meta fields', 'edd-compare-products' ) . '</strong>',
-			'desc' => __( 'Define default meta fields to show in comparison table.', 'edd-compare-products' ),
+			'desc' => '<p class="description">' . __( 'Define default meta fields to show in comparison table.', 'edd-compare-products' ) . '</p>',
 			'type' => 'compare_products_meta_fields'
 		),
 		array(
-			'id' 		=> 'edd-compare-products-button-text',
-			'name' 		=> __('Compare Button Text', 'edd-compare-products'),
-			'desc' 		=> __('Default is "Compare".', 'edd-compare-products'),
-			'type' 		=> 'text',
+			'id'   => 'edd-compare-products-button-text',
+			'name' => __( 'Compare Button Text', 'edd-compare-products' ),
+			'desc' => '<p class="description">' . __( 'Default is "Compare".', 'edd-compare-products' ) . '</p>',
+			'type' => 'text',
 		),
 		array(
-			'id' 		=> 'edd-compare-products-go-button-text',
-			'name' 		=> __('Go Button Text', 'edd-compare-products'),
-			'desc' 		=> __('After someone has selected the items they would like to compare, the buttons display a message. The default is "Go to Comparison".', 'edd-compare-products'),
-			'type' 		=> 'text',
+			'id'   => 'edd-compare-products-go-button-text',
+			'name' => __( 'Go Button Text', 'edd-compare-products' ),
+			'desc' => '<p class="description">' . __( 'After someone has selected the items they would like to compare, the buttons display a message. The default is "Go to Comparison".', 'edd-compare-products' ) . '</p>',
+			'type' => 'text',
 		),
 	);
 

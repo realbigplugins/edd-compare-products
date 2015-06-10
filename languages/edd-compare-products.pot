@@ -1,0 +1,130 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: edd-compare-products\n"
+"POT-Creation-Date: 2015-06-10 09:38-0500\n"
+"PO-Revision-Date: 2015-06-10 09:39-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: includes/class.extension-activation.php:37
+msgid "This plugin"
+msgstr ""
+
+#: includes/class.extension-activation.php:69
+msgid "activate it"
+msgstr ""
+
+#: includes/class.extension-activation.php:72
+msgid "install it"
+msgstr ""
+
+#: includes/class.extension-activation.php:75
+#, php-format
+msgid " requires Easy Digital Downloads! Please %s to continue!"
+msgstr ""
+
+#: includes/settings.php:19
+msgid "Fields"
+msgstr ""
+
+#: includes/settings.php:20
+msgid "Label"
+msgstr ""
+
+#: includes/settings.php:21
+msgid "Remove"
+msgstr ""
+
+#: includes/settings.php:37 includes/settings.php:62
+msgid "Choose a meta_field"
+msgstr ""
+
+#: includes/settings.php:47 includes/settings.php:71
+msgid "Remove Field"
+msgstr ""
+
+#: includes/settings.php:78
+msgid "Add Field"
+msgstr ""
+
+#: includes/settings.php:188
+msgid "Compare Products Settings"
+msgstr ""
+
+#: includes/settings.php:189
+msgid "Configure EDD Compare Products Settings"
+msgstr ""
+
+#: includes/settings.php:194
+msgid "Default Comparison Page"
+msgstr ""
+
+#: includes/settings.php:195
+msgid "Which Page contains the [edd_compare_products] shortcode?"
+msgstr ""
+
+#: includes/settings.php:201
+msgid "Default Downloads"
+msgstr ""
+
+#: includes/settings.php:202
+msgid "Comma separated list of download IDs."
+msgstr ""
+
+#: includes/settings.php:207
+msgid "Default Table Style"
+msgstr ""
+
+#: includes/settings.php:215
+msgid "Meta fields"
+msgstr ""
+
+#: includes/settings.php:216
+msgid "Define default meta fields to show in comparison table."
+msgstr ""
+
+#: includes/settings.php:221
+msgid "Compare Button Text"
+msgstr ""
+
+#: includes/settings.php:222
+msgid "Default is \"Compare\"."
+msgstr ""
+
+#: includes/settings.php:227
+msgid "Go Button Text"
+msgstr ""
+
+#: includes/settings.php:228
+msgid ""
+"After someone has selected the items they would like to compare, the buttons "
+"display a message. The default is \"Go to Comparison\"."
+msgstr ""
+
+#: includes/shortcodes.php:79
+msgid ""
+"The download IDs provided do not match any existing downloads. Please select "
+"some downloads to compare."
+msgstr ""
+
+#: includes/shortcodes.php:83
+msgid ""
+"The download IDs provided are invalid. Please select some downloads to "
+"compare."
+msgstr ""
+
+#: includes/shortcodes.php:86
+msgid ""
+"There's currently nothing to compare. Please select some downloads to "
+"compare."
+msgstr ""

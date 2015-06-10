@@ -74,16 +74,15 @@ function edd_compare_products_shortcode( $atts ) {
 				$output .= '</tr>';
 			}
 			$output .= '</tbody>';
-
-			if ( empty( $results ) ) {
-				$output .= 'IDs do not match any downloads.';
-			}
 			$output .= '</table></div>';
+			if ( empty( $results ) ) {
+				$output = __( 'The download IDs provided do not match any existing downloads. Please select some downloads to compare.', 'edd-compare-products' );
+			}
 		} else {
-			$output = 'No numerical IDs provided.';
+			$output = __( 'The download IDs provided are invalid. Please select some downloads to compare.', 'edd-compare-products' );
 		}
 	} else {
-		$output = 'No download IDs provided.';
+		$output = __( 'There\'s currently nothing to compare. Please select some downloads to compare.', 'edd-compare-products' );
 	}
 
 	return $output;

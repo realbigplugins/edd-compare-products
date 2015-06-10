@@ -38,6 +38,7 @@ function edd_compare_products_add_compare_button( $purchase_form, $args ) {
  * Get the URL of the default comparison page defined in settings
  *
  * @return bool|string
+ * @since 0.1
  */
 function edd_compare_products_get_compare_url() {
 	global $edd_options;
@@ -51,7 +52,11 @@ function edd_compare_products_get_compare_url() {
 
 /**
  * Creates the URL which customers will go to after selecting downloads to compare
+ *
+ * @since 0.1
  */
 function edd_compare_products_url() {
-	echo '<div id="edd-compare-url">' . edd_compare_products_get_compare_url() . '?compare=</div>';
+	$link = edd_compare_products_get_compare_url();
+	$arg = ( strpos( $link, '?' ) ) ? '&' : '?';
+	echo '<div id="edd-compare-url">' . $link . $arg . 'compare=</div>';
 }

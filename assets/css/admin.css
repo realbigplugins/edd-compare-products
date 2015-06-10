@@ -1,3 +1,6 @@
 .edd_compare_field_label input.regular-text {
    width: 100%;
 }
+#edd_compare_fields th {
+   padding-left: 12px;
+}

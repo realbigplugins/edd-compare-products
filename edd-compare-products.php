@@ -3,7 +3,7 @@
 Plugin Name: Easy Digital Downloads - Compare Products
 Plugin URI: http://realbigplugins.com
 Description: Allows helpful product comparison tables to be easily generated.
-Version: 0.1.1
+Version: 0.1.2
 Author: Kyle Maurer
 Author URI: http://realbigmarketing.com/staff/kyle
 License: GPL2
@@ -56,7 +56,7 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 */
 		private function setup_constants() {
 			// Plugin version
-			define( 'EDD_COMPARE_PRODUCTS_VER', '0.1.1' );
+			define( 'EDD_COMPARE_PRODUCTS_VER', '0.1.2' );
 			// Plugin path
 			define( 'EDD_COMPARE_PRODUCTS_DIR', plugin_dir_path( __FILE__ ) );
 			// Plugin URL

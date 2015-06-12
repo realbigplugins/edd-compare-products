@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: edd-compare-products\n"
-"POT-Creation-Date: 2015-06-10 09:38-0500\n"
-"PO-Revision-Date: 2015-06-10 09:39-0500\n"
+"POT-Creation-Date: 2015-06-11 21:49-0500\n"
+"PO-Revision-Date: 2015-06-11 21:49-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -57,6 +57,10 @@ msgstr ""
 msgid "Add Field"
 msgstr ""
 
+#: includes/settings.php:110
+msgid "-- No fields exist --"
+msgstr ""
+
 #: includes/settings.php:188
 msgid "Compare Products Settings"
 msgstr ""
@@ -83,6 +87,10 @@ msgstr ""
 
 #: includes/settings.php:207
 msgid "Default Table Style"
+msgstr ""
+
+#: includes/settings.php:210
+msgid "Horizontal Scroll"
 msgstr ""
 
 #: includes/settings.php:215
@@ -117,13 +125,13 @@ msgid ""
 "some downloads to compare."
 msgstr ""
 
-#: includes/shortcodes.php:83
+#: includes/shortcodes.php:82
 msgid ""
 "The download IDs provided are invalid. Please select some downloads to "
 "compare."
 msgstr ""
 
-#: includes/shortcodes.php:86
+#: includes/shortcodes.php:85
 msgid ""
 "There's currently nothing to compare. Please select some downloads to "
 "compare."

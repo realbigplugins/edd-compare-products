@@ -11,7 +11,7 @@ function eddCompareURL(id) {
     var url = "edd-compare-url";
     document.getElementById(url).innerHTML = document.getElementById(url).innerHTML + id + ',';
     document.getElementById('edd-compare-button-' + id).style.display = 'none';
-    document.getElementById('edd-compare-go-button-' + id).style.display = 'block';
+    document.getElementById('edd-compare-go-button-' + id).style.display = 'inline-block';
     var elements = document.getElementsByClassName("edd-compare-go");
     for (var i = 0; i < elements.length; i++) {
         var link = document.getElementById(url).innerHTML.replace(/\&amp\;/g, "&").slice(0, - 1);

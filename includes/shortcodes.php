@@ -76,13 +76,13 @@ function edd_compare_products_shortcode( $atts ) {
 			$output .= '</tbody>';
 			$output .= '</table></div>';
 			if ( empty( $results ) ) {
-				$output = __( 'The download IDs provided do not match any existing downloads. Please select some downloads to compare.', 'edd-compare-products' );
+				$output = __( 'The ' . edd_get_label_singular() . ' IDs provided do not match any existing ' . edd_get_label_plural() . '. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
 			}
 		} else {
-			$output = __( 'The download IDs provided are invalid. Please select some downloads to compare.', 'edd-compare-products' );
+			$output = __( 'The ' . edd_get_label_singular() . ' IDs provided are invalid. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
 		}
 	} else {
-		$output = __( 'There\'s currently nothing to compare. Please select some downloads to compare.', 'edd-compare-products' );
+		$output = __( 'There\'s currently nothing to compare. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
 	}
 
 	return $output;

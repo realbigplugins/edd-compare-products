@@ -107,7 +107,7 @@ function edd_compare_remove_some_meta_fields( $fields ) {
 		}
 	} else {
 		// No downloads published so....
-		$fields = array( '0' => '-- No fields exist --' );
+		$fields = array( '0' => __( '-- No fields exist --', 'edd-compare-products' ) );
 	}
 
 	return $fields;
@@ -207,7 +207,7 @@ function edd_compare_products_settings( $settings ) {
 			'name'    => __( 'Default Table Style', 'edd-compare-products' ),
 			'type'    => 'select',
 			'options' => array(
-				'edd-compare-h-scroll' => 'Horizontal Scroll',
+				'edd-compare-h-scroll' => __( 'Horizontal Scroll', 'edd-compare-products' ),
 			),
 		),
 		array(

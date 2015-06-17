@@ -55,6 +55,10 @@ function edd_compare_products_shortcode( $atts ) {
 						if ( is_object( $download ) ) {
 							if ( $field['meta_field'] == 'thumbnail' ) {
 								$value = get_the_post_thumbnail( $download_id, 'thumbnail' );
+							} elseif ( $field['meta_field'] == 'edd_price' ||
+							           $field['meta_field'] == '_edd_download_earnings' ||
+							           $field['meta_field'] == '_edd_download_sales' ) {
+								$value = edd_currency_filter( get_post_meta( $download_id, $field['meta_field'], true ) );
 							} else {
 								$value = get_post_meta( $download_id, $field['meta_field'], true );
 							}

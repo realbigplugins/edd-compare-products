@@ -58,5 +58,5 @@ function edd_compare_products_get_compare_url() {
 function edd_compare_products_url() {
 	$link = edd_compare_products_get_compare_url();
 	$arg = ( strpos( $link, '?' ) ) ? '&' : '?';
-	echo '<div id="edd-compare-url">' . $link . $arg . 'compare=</div>';
+	echo '<div id="edd-compare-url" style="display: none">' . $link . $arg . 'compare=</div>';
 }

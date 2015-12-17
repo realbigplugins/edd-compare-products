@@ -39,7 +39,12 @@ function edd_compare_products_scripts() {
  */
 function edd_compare_products_enqueue() {
 	global $edd_options;
-	$compare_page = $edd_options['edd-compare-products-page'];
+
+	if ( isset( $edd_options['edd-compare-products-page'] ) ) {
+		$compare_page = $edd_options['edd-compare-products-page'];
+	} else {
+		return;
+	}
 
 	if ( is_page( $compare_page ) ) {
 		edd_compare_products_scripts();

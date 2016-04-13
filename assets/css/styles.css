@@ -15,9 +15,566 @@
 }
 /* Table style options */
 .edd-compare-h-scroll {
-    overflow-x: auto;
+    /*overflow-x: auto;*/
 }
 /* Make added to cart message inline */
 .edd-compare-products .edd-cart-added-alert, .edd_downloads_list .edd-cart-added-alert {
     position: relative;
+}
+
+.edd-compare-products-wrapper {
+    overflow-x: auto;
+    /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
+    -webkit-overflow-scrolling: touch;
+}
+
+.edd-compare-products .features {
+    /* fixed left column - product properties list */
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 120px;
+}
+
+.edd-compare-products-columns {
+    /* products list wrapper */
+    width: 1200px; /* single column width * products number */
+    margin-left: 120px; /* .features width */
+}
+
+@media only screen and (min-width: 1170px) {
+
+    .edd-compare-products.top-fixed .edd-compare-products-columns > li {
+        padding-top: 160px;
+    }
+
+    .edd-compare-products.top-fixed .top-info {
+        height: 160px;
+        position: fixed;
+        top: 0;
+    }
+
+    .edd-compare-products.top-fixed .top-info h3 {
+        transform: translateY(-116px);
+    }
+
+    .edd-compare-products.top-fixed .top-info img {
+        transform: translateY(-62px) scale(0.4);
+    }
+
+}
+
+.edd-compare-products {
+  margin-bottom: 6em;
+}
+.edd-compare-products::after {
+  /* never visible - this is used in jQuery to check the current MQ */
+  display: none;
+  content: 'mobile';
+}
+.edd-compare-products .edd-compare-products-header {
+  padding: 0 5% 25px;
+}
+.edd-compare-products .edd-compare-products-header::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.edd-compare-products h2 {
+  float: left;
+  font-weight: bold;
+}
+.edd-compare-products .actions {
+  float: right;
+}
+.edd-compare-products .reset, .edd-compare-products .filter {
+  font-size: 1.4rem;
+}
+.edd-compare-products .reset {
+  color: #404042;
+  text-decoration: underline;
+}
+.edd-compare-products .filter {
+  padding: .6em 1.5em;
+  color: #ffffff;
+  background-color: #cccccc;
+  border-radius: 3px;
+  margin-left: 1em;
+  cursor: not-allowed;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.edd-compare-products .filter.active {
+  cursor: pointer;
+  background-color: #9dc997;
+}
+.no-touch .edd-compare-products .filter.active:hover {
+  background-color: #a7cea1;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products {
+    margin-bottom: 8em;
+  }
+  .edd-compare-products::after {
+    /* never visible - this is used in jQuery to check the current MQ */
+    content: 'desktop';
+  }
+  .edd-compare-products .edd-compare-products-header {
+    padding: 0 5% 40px;
+  }
+  .edd-compare-products h2 {
+    font-size: 2.4rem;
+  }
+  .edd-compare-products .reset, .edd-compare-products .filter {
+    font-size: 1.6rem;
+  }
+  .edd-compare-products .filter {
+    padding: .6em 2em;
+    margin-left: 1.6em;
+  }
+}
+
+.edd-compare-products-table {
+  position: relative;
+  overflow: hidden;
+}
+
+.edd-compare-products-table .features {
+  /* fixed left column - product properties list */
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 120px;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  background-color: #fafafa;
+  opacity: .95;
+}
+.edd-compare-products-table .features::after {
+  /* color gradient on the right of .features -  visible while scrolling inside the .edd-compare-products-table */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 4px;
+  height: 100%;
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.06), transparent);
+  background-image: linear-gradient(to right,rgba(0, 0, 0, 0.06), transparent);
+  opacity: 0;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-table .features {
+    width: 210px;
+  }
+}
+
+.edd-compare-products-table.scrolling .features::after {
+  opacity: 1;
+}
+
+.edd-compare-products-wrapper {
+  overflow-x: auto;
+  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
+  -webkit-overflow-scrolling: touch;
+  border-style: solid;
+  border-color: #e6e6e6;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.edd-compare-products-columns {
+  /* products list wrapper */
+  width: 1200px;
+  margin-left: 120px;
+}
+.edd-compare-products-columns::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-columns {
+    width: 2480px;
+    margin-left: 210px;
+  }
+}
+
+.edd-compare-products-columns .product {
+  position: relative;
+  float: left;
+  width: 150px;
+  text-align: center;
+  -webkit-transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
+  -moz-transition: opacity 0.3s, visibility 0.3s, -moz-transform 0.3s;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+.filtering .edd-compare-products-columns .product:not(.selected) {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+.no-product-transition .edd-compare-products-columns .product.selected {
+  -webkit-transition: opacity 0.3s, visibility 0.3s;
+  -moz-transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.filtered .edd-compare-products-columns .product:not(.selected) {
+  position: absolute;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-columns .product {
+    width: 310px;
+  }
+}
+
+.edd-compare-products-features-list li {
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-color: #e6e6e6;
+  border-style: solid;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.edd-compare-products-features-list li.rate {
+  /* rating stars */
+  padding: 21px 0;
+}
+.edd-compare-products-features-list li.rate span {
+  display: inline-block;
+  height: 22px;
+  width: 110px;
+  background: url(../img/edd-compare-products-star.svg);
+  color: transparent;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-features-list li {
+    font-size: 1.6rem;
+  }
+  .edd-compare-products-features-list li.rate {
+    padding: 22px 0;
+  }
+}
+
+.features .edd-compare-products-features-list li,
+.edd-compare-products-table .features .top-info {
+  /* fixed left column - items */
+  font-size: 1.6rem;
+  font-weight: bold;
+  /* set line-height value equal to font-size of text inside product cells */
+  line-height: 1.6;
+  text-align: left;
+}
+@media only screen and (min-width: 1170px) {
+  .features .edd-compare-products-features-list li,
+  .edd-compare-products-table .features .top-info {
+    text-transform: uppercase;
+    line-height: 1.6;
+    letter-spacing: 1px;
+  }
+}
+
+.features .edd-compare-products-features-list li {
+  /* truncate text with dots */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.edd-compare-products-table .top-info {
+  position: relative;
+  height: 177px;
+  width: 150px;
+  text-align: center;
+  padding: 1.25em 2.5em;
+  border-color: #e6e6e6;
+  border-style: solid;
+  border-right-width: 1px;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  cursor: pointer;
+  background: #ffffff;
+}
+.edd-compare-products-table .top-info::after {
+  /* color gradient below .top-info -  visible when .top-info is fixed */
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 4px;
+  width: 100%;
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.06), transparent);
+  background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.06), transparent);
+  opacity: 0;
+}
+.edd-compare-products-table .top-info h3 {
+  padding: 1.25em 0 0.625em;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.edd-compare-products-table .top-info img {
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.edd-compare-products-table .top-info h3, .edd-compare-products-table .top-info img {
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+}
+.edd-compare-products-table .top-info .check {
+  position: relative;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  margin: 0 auto 1em;
+}
+.edd-compare-products-table .top-info .check::after, .edd-compare-products-table .top-info .check::before {
+  /* used to create the check icon and green circle dot - visible when product is selected */
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  height: 100%;
+  width: 100%;
+}
+.edd-compare-products-table .top-info .check::before {
+  /* green circle dot */
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+  background: #ffffff;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.3s, border-color 0.3s;
+  -moz-transition: background-color 0.3s, -moz-transform 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+}
+.edd-compare-products-table .top-info .check::after {
+  /* check icon */
+  background: url(../img/edd-compare-products-check.svg) no-repeat center center;
+  background-size: 24px 24px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-table .top-info {
+    height: 280px;
+    width: 310px;
+  }
+  .edd-compare-products-table .top-info h3 {
+    padding-top: 1.4em;
+    font-size: 1.6rem;
+  }
+  .edd-compare-products-table .top-info .check {
+    margin-bottom: 1.5em;
+  }
+}
+
+.edd-compare-products-table .features .top-info {
+  /* models */
+  width: 120px;
+  cursor: auto;
+  background: #fafafa;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-table .features .top-info {
+    width: 210px;
+  }
+}
+
+.edd-compare-products-table .selected .top-info .check::before {
+  /* green circle dot */
+  background: #9dc997;
+  border-color: #9dc997;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-animation: edd-compare-products-bounce 0.3s;
+  -moz-animation: edd-compare-products-bounce 0.3s;
+  animation: edd-compare-products-bounce 0.3s;
+}
+
+@-webkit-keyframes edd-compare-products-bounce {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  60% {
+    -webkit-transform: scale(1.6);
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+  }
+}
+@-moz-keyframes edd-compare-products-bounce {
+  0% {
+    -moz-transform: scale(1);
+  }
+  60% {
+    -moz-transform: scale(1.6);
+  }
+  100% {
+    -moz-transform: scale(1.5);
+  }
+}
+@keyframes edd-compare-products-bounce {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  60% {
+    -webkit-transform: scale(1.6);
+    -moz-transform: scale(1.6);
+    -ms-transform: scale(1.6);
+    -o-transform: scale(1.6);
+    transform: scale(1.6);
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+}
+.edd-compare-products-table .selected .top-info .check::after {
+  /* check icon */
+  opacity: 1;
+}
+
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-table.top-fixed .edd-compare-products-columns > li,
+  .edd-compare-products-table.top-scrolling .edd-compare-products-columns > li,
+  .edd-compare-products-table.top-fixed .features,
+  .edd-compare-products-table.top-scrolling .features {
+    padding-top: 160px;
+  }
+
+  .edd-compare-products-table.top-fixed .top-info,
+  .edd-compare-products-table.top-scrolling .top-info {
+    height: 160px;
+    position: fixed;
+    top: 0;
+  }
+  .no-cssgradients .edd-compare-products-table.top-fixed .top-info, .no-cssgradients
+  .edd-compare-products-table.top-scrolling .top-info {
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .edd-compare-products-table.top-fixed .top-info::after,
+  .edd-compare-products-table.top-scrolling .top-info::after {
+    opacity: 1;
+  }
+  .edd-compare-products-table.top-fixed .top-info h3,
+  .edd-compare-products-table.top-scrolling .top-info h3 {
+    -webkit-transform: translateY(-116px);
+    -moz-transform: translateY(-116px);
+    -ms-transform: translateY(-116px);
+    -o-transform: translateY(-116px);
+    transform: translateY(-116px);
+  }
+  .edd-compare-products-table.top-fixed .top-info img,
+  .edd-compare-products-table.top-scrolling .top-info img {
+    -webkit-transform: translateY(-62px) scale(0.4);
+    -moz-transform: translateY(-62px) scale(0.4);
+    -ms-transform: translateY(-62px) scale(0.4);
+    -o-transform: translateY(-62px) scale(0.4);
+    transform: translateY(-62px) scale(0.4);
+  }
+
+  .edd-compare-products-table.top-scrolling .top-info {
+    position: absolute;
+  }
+}
+
+.edd-compare-products-navigation {
+    list-style: none;
+}
+
+.edd-compare-products-navigation a {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 15px;
+  -webkit-transform: translateY(55px);
+  -moz-transform: translateY(55px);
+  -ms-transform: translateY(55px);
+  -o-transform: translateY(55px);
+  transform: translateY(55px);
+  /* replace text with image */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  color: transparent;
+  height: 60px;
+  width: 40px;
+  background: rgba(64, 64, 66, 0.8) url("../img/edd-compare-products-arrow.svg") no-repeat center center;
+  border-radius: 3px;
+  -webkit-transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
+  -moz-transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, -moz-transform 0.3s;
+  transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+.edd-compare-products-navigation a.inactive {
+  opacity: 0;
+  visibility: hidden;
+}
+.edd-compare-products-navigation a.prev {
+  left: 120px;
+  right: auto;
+  -webkit-transform: translateY(55px) translateX(15px) rotate(180deg);
+  -moz-transform: translateY(55px) translateX(15px) rotate(180deg);
+  -ms-transform: translateY(55px) translateX(15px) rotate(180deg);
+  -o-transform: translateY(55px) translateX(15px) rotate(180deg);
+  transform: translateY(55px) translateX(15px) rotate(180deg);
+}
+.no-touch .edd-compare-products-navigation a:hover {
+  background-color: #404042;
+}
+@media only screen and (min-width: 1170px) {
+  .edd-compare-products-navigation a {
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  .edd-compare-products-navigation a.prev {
+    left: 210px;
+    -webkit-transform: translateY(100px) translateX(15px) rotate(180deg);
+    -moz-transform: translateY(100px) translateX(15px) rotate(180deg);
+    -ms-transform: translateY(100px) translateX(15px) rotate(180deg);
+    -o-transform: translateY(100px) translateX(15px) rotate(180deg);
+    transform: translateY(100px) translateX(15px) rotate(180deg);
+  }
+  .top-fixed .edd-compare-products-navigation a {
+    position: fixed;
+  }
+  .top-fixed .edd-compare-products-navigation a, .top-scrolling .edd-compare-products-navigation a {
+    -webkit-transform: translateY(45px);
+    -moz-transform: translateY(45px);
+    -ms-transform: translateY(45px);
+    -o-transform: translateY(45px);
+    transform: translateY(45px);
+  }
+  .top-fixed .edd-compare-products-navigation a.prev, .top-scrolling .edd-compare-products-navigation a.prev {
+    -webkit-transform: translateY(45px) translateX(15px) rotate(180deg);
+    -moz-transform: translateY(45px) translateX(15px) rotate(180deg);
+    -ms-transform: translateY(45px) translateX(15px) rotate(180deg);
+    -o-transform: translateY(45px) translateX(15px) rotate(180deg);
+    transform: translateY(45px) translateX(15px) rotate(180deg);
+  }
 }

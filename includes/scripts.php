@@ -28,7 +28,7 @@ add_action( 'admin_enqueue_scripts', 'edd_compare_products_admin_scripts', 100 )
  * @return      void
  */
 function edd_compare_products_scripts() {
-	wp_enqueue_script( 'edd_compare_products_js', EDD_COMPARE_PRODUCTS_URL . 'assets/js/scripts.js' );
+	wp_enqueue_script( 'edd_compare_products_js', EDD_COMPARE_PRODUCTS_URL . 'assets/js/scripts.js', array( 'jquery', 'jquery-ui-core', 'jquery-effects-slide' ) );
 	wp_enqueue_style( 'edd_compare_products_css', EDD_COMPARE_PRODUCTS_URL . 'assets/css/styles.css' );
 }
 

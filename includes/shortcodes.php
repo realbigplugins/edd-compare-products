@@ -57,7 +57,9 @@ function edd_compare_products_shortcode( $atts ) {
                         
                         <ul class="edd-compare-products-features-list">
 
-                        <?php foreach( $fields as $field ) : ?>
+                        <?php foreach( $fields as $field ) : 
+                            
+                            if ( $field['meta_field'] == 'thumbnail' ) continue; ?>
                             
                             <li>
                                 <?php echo ( $field['label'] ) ? $field['label'] : $field['meta_field']; ?>
@@ -109,16 +111,16 @@ function edd_compare_products_shortcode( $atts ) {
                                     $features .= '<li>' . get_post_meta( $download_id, $field['meta_field'], true ) . '</li>';
 
                                 endif; ?>
-                                
-                                    <ul class="edd-compare-products-features-list">
-                                        <?php echo $features; ?>
-                                    </ul>
-                                
-                                </li>
 
-                        <?php endforeach; // Each Field
+                        <?php endforeach; // Each Field ?>
+                                
+                                <ul class="edd-compare-products-features-list">
+                                    <?php echo $features; ?>
+                                </ul>
+                                
+                            </li>
 
-                        endif; // If is_object()
+                        <?php endif; // If is_object()
 
                     endforeach; // echo Field for each download_id ?>
                             
@@ -127,6 +129,15 @@ function edd_compare_products_shortcode( $atts ) {
                 <?php endif; // If Fields ?>
                         
                     </div> <!-- end .edd-compare-products-wrapper -->
+                    
+                    <ul class="edd-compare-products-navigation">
+                        <li>
+                            <a href="#" class="prev inactive">Prev</a>
+                        </li>
+                        <li>
+                            <a href="#" class="next">Next</a>
+                        </li>
+                    </ul>
                     
                 </div> <!-- end .edd-compare-products-table -->
             </section> <!-- end .edd-compare-products -->

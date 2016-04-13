@@ -29,95 +29,117 @@ function edd_compare_products_shortcode( $atts ) {
 		if ( $download_ids ) :
             
             // We're going to build DOM in an Object Buffer, which helps keep things more readable.
-            ob_start(); ?>
+            ob_start(); 
+        
+            $fields = edd_compare_get_meta_fields();
 
-			<div class="edd-compare-products <?php echo $edd_options["edd-compare-products-default-style"]; ?>">
-                <table>
-			         <thead>
-                         <tr>
-                             <th>Title</th>
+            ?>
+
+            <section class="edd-compare-products <?php echo $edd_options["edd-compare-products-default-style"]; ?>">
+                
+                <div class="edd-compare-products-header">
+                    <h2>Compare</h2>
+                    <div class="actions">
+                        <a href="#" class="reset">Reset</a>
+                        <a href="#" class="filter">Filter</a>
+                    </div>
+                </div>
+                
+                <div class="edd-compare-products-table">
                     
-                    <?php foreach ( $download_ids as $download_id ) : 
-                        $download = edd_get_download( $download_id );
-                        if ( is_object( $download ) ) : ?>
-                            <th>
-                                <a href="<?php the_permalink( $download->ID ); ?>"><?php echo $download->post_title; ?></a>
-                            </th>
-                        <?php endif; 
-                    endforeach; ?>
-                         
-                         </tr>
-                    </thead>
-
-                    <tbody>
+                    <div class="features">
                         
-                <?php // Rows
-                $fields = edd_compare_get_meta_fields();
-                if ( $fields ) :
+                        <div class="top-info">
+                             Title
+                        </div>
+                        
+                    <?php if ( $fields ) : ?>
+                        
+                        <ul class="edd-compare-products-features-list">
 
-                    // Meta fields
-                    foreach ( $fields as $field ) : ?>
-                        <tr>
+                        <?php foreach( $fields as $field ) : ?>
                             
-                            <td>
+                            <li>
                                 <?php echo ( $field['label'] ) ? $field['label'] : $field['meta_field']; ?>
-                            </td>
+                            </li>
                             
-                        <?php foreach ( $download_ids as $download_id ) :
-            
-                            $download = edd_get_download( $download_id );
-            
-                            if ( is_object( $download ) ) :
-                                if ( $field['meta_field'] == 'thumbnail' ) :
-                                    $value = get_the_post_thumbnail( $download_id, 'thumbnail' );
-                                elseif ( $field['meta_field'] == 'edd_price' ||
+                        <?php endforeach; ?>
+                            
+                        </ul>
+                        
+                    <?php endif; ?>
+                    
+                        
+                    </div> <!-- end .features -->
+
+                    <div class="edd-compare-products-wrapper">
+                        
+                <?php // Products
+                if ( $fields ) : ?>
+                        
+                        <ul class="edd-compare-products-columns">
+
+                    <?php // Meta fields
+                    foreach ( $download_ids as $download_id ) : 
+                            
+                        $download = edd_get_download( $download_id );
+                        $features = '';
+        
+                        if ( is_object( $download ) ) : ?>
+        
+                            <li class="product">
+
+                        <?php foreach ( $fields as $field ) :
+
+                                if ( $field['meta_field'] == 'thumbnail' ) : ?>
+
+                                <div class="top-info">
+                                    <?php echo get_the_post_thumbnail( $download_id, 'thumbnail' ); ?>
+                                    <h3><a href="<?php echo get_permalink( $download_id ); ?>"><?php echo get_the_title( $download_id ); ?></a></h3>
+                                </div>
+
+                                <?php elseif ( $field['meta_field'] == 'edd_price' ||
                                            $field['meta_field'] == '_edd_download_earnings' ||
                                            $field['meta_field'] == '_edd_download_sales' ) :
-                                    $value = edd_currency_filter( get_post_meta( $download_id, $field['meta_field'], true ) ); 
-                                else :
-                                    $value = get_post_meta( $download_id, $field['meta_field'], true );
-                                endif; ?>
-            
-                            <td>
-                                <?php echo $value; ?>
-                            </td>
-            
-                            <?php endif; // If is_object()
-                        endforeach; // echo Field for each download_id ?>
-                            
-                        </tr>
-                        
-				    <?php endforeach; // Each Field ?>
-                        
-                        <tr>
-                            <td> </td> <?php // Empty cell to offset past labels
-                    
-                    foreach ( $download_ids as $download_id ) : 
-                        $download = edd_get_download( $download_id );
-                        if ( is_object( $download ) ) : ?>
-                            <td>
-                                <?php echo edd_get_purchase_link( array( 'download_id' => $download_id ) ); ?>
-                            </td>
-                        <?php endif;
-                    endforeach // Each download_id ?>
-                            
-                        </tr>
-                        
-                <?php endif; // If Field ?>
-                        
-                    </tbody>
-                </table>
-            </div> <!-- end .edd-compare-products -->
+        
+                                    $features .= '<li>' . edd_currency_filter( get_post_meta( $download_id, $field['meta_field'], true ) ) . '</li>';
 
-		<?php 
+                                else :
+        
+                                    $features .= '<li>' . get_post_meta( $download_id, $field['meta_field'], true ) . '</li>';
+
+                                endif; ?>
+                                
+                                    <ul class="edd-compare-products-features-list">
+                                        <?php echo $features; ?>
+                                    </ul>
+                                
+                                </li>
+
+                        <?php endforeach; // Each Field
+
+                        endif; // If is_object()
+
+                    endforeach; // echo Field for each download_id ?>
+                            
+                        </ul>
+                        
+                <?php endif; // If Fields ?>
+                        
+                    </div> <!-- end .edd-compare-products-wrapper -->
+                    
+                </div> <!-- end .edd-compare-products-table -->
+            </section> <!-- end .edd-compare-products -->
+
+            <?php 
             
             // Everything gets assigned to $output at once. Much cleaner.
             $output = ob_get_contents();
             ob_end_clean();
                                     
         else :
-			$output = __( 'The ' . edd_get_label_singular() . ' IDs provided are invalid. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
-		endif; // If Download IDS
+            $output = __( 'The ' . edd_get_label_singular() . ' IDs provided are invalid. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
+        endif; // If Download IDS
                                     
 	}  // If $atts['ids']
     else {

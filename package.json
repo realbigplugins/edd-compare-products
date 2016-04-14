@@ -1,0 +1,13 @@
+{
+    "name": "edd_compare_products",
+    "version": "1.0.2",
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-sass": "*",
+        "grunt-autoprefixer": "*",
+        "grunt-contrib-uglify": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-notify": "*",
+        "matchdep": "*"
+    }
+}

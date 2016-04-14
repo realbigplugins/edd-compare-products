@@ -55,7 +55,7 @@ function edd_compare_products_shortcode( $atts ) {
                         
                     <?php if ( $fields ) : ?>
                         
-                        <ul class="edd-compare-products-features-list">
+                        <ul class="edd-compare-products-features-list-labels">
 
                         <?php foreach( $fields as $field ) : 
                             

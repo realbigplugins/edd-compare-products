@@ -96,7 +96,7 @@ function edd_compare_products_shortcode( $atts ) {
                                 if ( $field['meta_field'] == 'thumbnail' ) : ?>
 
                                 <div class="top-info">
-                                    <?php echo get_the_post_thumbnail( $download_id, 'thumbnail' ); ?>
+                                    <?php echo get_the_post_thumbnail( $download_id, array( 75, 75 ) ); ?>
                                     <h3><a href="<?php echo get_permalink( $download_id ); ?>"><?php echo get_the_title( $download_id ); ?></a></h3>
                                 </div>
 
@@ -112,7 +112,10 @@ function edd_compare_products_shortcode( $atts ) {
 
                                 endif; ?>
 
-                        <?php endforeach; // Each Field ?>
+                        <?php endforeach; // Each Field
+        
+                        // Buy Button
+                        $features .= '<li>' . edd_get_purchase_link( array( 'download_id' => $download_id ) ) . '</li>' ?>
                                 
                                 <ul class="edd-compare-products-features-list">
                                     <?php echo $features; ?>

@@ -26,6 +26,10 @@
     background-color: #a7cea1;
 }
 
+.no-touch .edd-compare-products-navigation a:hover {
+    background-color: #404042;
+}
+
 .edd-compare-products {
 
     margin-bottom: 6em;
@@ -101,6 +105,7 @@
             background-color: #fafafa;
             opacity: .95;
             width: 126px;
+            height: 98%;
 
             .top-info {
                 width: 120px;
@@ -184,7 +189,7 @@
                         margin-left: 0;
                         margin-bottom: 0;
 
-                        li {
+                        & > li {
                             font-size: 1.6rem;
                             font-weight: bold;
                             border-color: #e6e6e6;
@@ -270,6 +275,7 @@
                 display: block;
                 -webkit-backface-visibility: hidden;
                 backface-visibility: hidden;
+                margin: 0 auto;
             }
 
             h3, img {
@@ -317,18 +323,49 @@
 
             }
 
-            &::after {
-                /* color gradient below .top-info -  visible when .top-info is fixed */
-                content: '';
+        }
+
+        .edd-compare-products-navigation {
+            list-style: none;
+
+            a {
                 position: absolute;
-                left: 0;
-                top: 100%;
-                height: 4px;
-                width: 100%;
-                background-color: transparent;
-                background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.06), transparent);
-                background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.06), transparent);
-                opacity: 0;
+                z-index: 2;
+                top: 0;
+                right: 15px;
+                -webkit-transform: translateY(55px);
+                -moz-transform: translateY(55px);
+                -ms-transform: translateY(55px);
+                -o-transform: translateY(55px);
+                transform: translateY(55px);
+                /* replace text with image */
+                overflow: hidden;
+                text-indent: 100%;
+                white-space: nowrap;
+                color: transparent;
+                height: 60px;
+                width: 40px;
+                background: rgba(64, 64, 66, 0.8) url("../img/edd-compare-products-arrow.svg") no-repeat center center;
+                border-radius: 3px;
+                -webkit-transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
+                -moz-transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, -moz-transform 0.3s;
+                transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, transform 0.3s;
+
+                &.inactive {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                &.prev {
+                    left: 120px;
+                    right: auto;
+                    -webkit-transform: translateY(55px) translateX(15px) rotate(180deg);
+                    -moz-transform: translateY(55px) translateX(15px) rotate(180deg);
+                    -ms-transform: translateY(55px) translateX(15px) rotate(180deg);
+                    -o-transform: translateY(55px) translateX(15px) rotate(180deg);
+                    transform: translateY(55px) translateX(15px) rotate(180deg);
+                }
+
             }
 
         }
@@ -385,19 +422,19 @@
 
 }
 
+/* Desktop Specific Overrides */
 @media only screen and (min-width: 1170px) {
-    
+
     .edd-compare-products {
-        
+
         .edd-compare-products-table {
-            
+
             .top-info {
-                padding: 1.25em 2.5em;
                 width: 210px;
             }
 
             .features {
-                
+
                 width: 216px;
 
                 .top-info {
@@ -424,15 +461,38 @@
 
             }
 
+            .edd-compare-products-navigation {
+
+                a {
+                    -webkit-transform: translateY(100px);
+                    -moz-transform: translateY(100px);
+                    -ms-transform: translateY(100px);
+                    -o-transform: translateY(100px);
+                    transform: translateY(100px);
+
+                    &.prev {
+                        left: 210px;
+                        -webkit-transform: translateY(100px) translateX(15px) rotate(180deg);
+                        -moz-transform: translateY(100px) translateX(15px) rotate(180deg);
+                        -ms-transform: translateY(100px) translateX(15px) rotate(180deg);
+                        -o-transform: translateY(100px) translateX(15px) rotate(180deg);
+                        transform: translateY(100px) translateX(15px) rotate(180deg);
+                    }
+
+                }
+
+            }
+
+            &::after {
+                /* never visible - this is used in jQuery to check the current Breakpoint */
+                content: 'desktop';
+                display: none;
+            }
+
         }
 
-        &::after {
-            /* never visible - this is used in jQuery to check the current Breakpoint */
-            content: 'desktop';
-        }
-        
     }
-    
+
 }
 
 @-webkit-keyframes edd-compare-products-bounce {

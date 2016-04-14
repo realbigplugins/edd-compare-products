@@ -73,7 +73,7 @@ module.exports = function (grunt) {
                 files: {
                     'assets/js/scripts.js': [
                         // Vendor files
-
+                        'build/vendor/js/jquery.textfit.js',
                         // Plugin scripts
                         'build/js/**/*.js',
                         '!build/js/admin/**/*.js',

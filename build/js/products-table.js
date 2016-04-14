@@ -111,37 +111,6 @@ jQuery( function( $ ) {
         ( scrollLeft < this.tableColumns.outerWidth(true) - this.productsWrapper.width() && this.tableColumns.outerWidth(true) > this.productsWrapper.width() ) ? this.navigation.find('.next').removeClass('inactive') : this.navigation.find('.next').addClass('inactive');
     }
 
-    productsTable.prototype.updateTopScrolling = function(scrollTop) {
-        var offsetTop = this.table.offset().top,
-            tableScrollLeft = this.productsWrapper.scrollLeft();
-
-        if ( offsetTop <= scrollTop && offsetTop + this.tableHeight - this.topInfoHeight >= scrollTop ) {
-            //fix products top-info && arrows navigation
-            if( !this.table.hasClass('top-fixed') && $(document).height() > offsetTop + $(window).height() + 200) { 
-                this.table.addClass('top-fixed').removeClass('top-scrolling');
-                if( checkMQ() == 'desktop' ) {
-                    this.productsTopInfo.css('top', '0');
-                    this.navigation.find('a').css('top', '0px');
-                }
-            }
-
-        } else if( offsetTop <= scrollTop ) {
-            //product top-info && arrows navigation -  scroll with table
-            this.table.removeClass('top-fixed').addClass('top-scrolling');
-            if( checkMQ() == 'desktop' )  {
-                this.productsTopInfo.css('top', (this.tableHeight - this.topInfoHeight) +'px');
-                this.navigation.find('a').css('top', (this.tableHeight - this.topInfoHeight) +'px');
-            }
-        } else {
-            //product top-info && arrows navigation -  reset style
-            this.table.removeClass('top-fixed top-scrolling');
-            this.productsTopInfo.attr('style', '');
-            this.navigation.find('a').attr('style', '');
-        }
-
-        this.updateLeftScrolling();
-    }
-
     productsTable.prototype.updateProperties = function() {
         this.tableHeight = this.table.height();
         this.productWidth = this.products.eq(0).width();
@@ -241,15 +210,6 @@ jQuery( function( $ ) {
         comparisonTables.push(new productsTable($(this)));
     });
 
-    var windowScrolling = false;
-    //detect window scroll - fix product top-info on scrolling
-    $(window).on('scroll', function(){
-        if(!windowScrolling) {
-            windowScrolling = true;
-            (!window.requestAnimationFrame) ? setTimeout(checkScrolling, 250) : window.requestAnimationFrame(checkScrolling);
-        }
-    });
-
     var windowResize = false;
     //detect window resize - reset .edd-compare-products properties
     $(window).on('resize', function(){
@@ -258,15 +218,6 @@ jQuery( function( $ ) {
             (!window.requestAnimationFrame) ? setTimeout(checkResize, 250) : window.requestAnimationFrame(checkResize);
         }
     });
-
-    function checkScrolling(){
-        var scrollTop = $(window).scrollTop();
-        comparisonTables.forEach(function(element){
-            element.updateTopScrolling(scrollTop);
-        });
-
-        windowScrolling = false;
-    }
 
     function checkResize(){
         comparisonTables.forEach(function(element){

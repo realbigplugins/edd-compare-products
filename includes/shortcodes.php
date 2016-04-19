@@ -121,6 +121,8 @@ function edd_compare_products_shortcode( $atts ) {
 
                                 <div class="top-info">
                                     
+                                    <div class="check"></div>
+                                    
                                     <?php if ( has_post_thumbnail( $download_id ) ) : ?>
                                         <a href="<?php echo get_permalink( $download_id ); ?>" title="<?php echo get_the_title( $download_id ); ?>">
                                             <?php echo get_the_post_thumbnail( $download_id, array( 75, 75 ) ); ?>

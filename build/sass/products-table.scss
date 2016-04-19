@@ -261,7 +261,7 @@
             position: relative;
             height: 11em;
             text-align: center;
-            padding: 0.5em;
+            padding: 0.25em 0.5em 0.5em;
             border-color: #e6e6e6;
             border-style: solid;
             border-right-width: 0.06em;
@@ -276,7 +276,7 @@
             h3 {
                 padding: 0.625em 0 0.625em;
                 font-weight: bold;
-                font-size: 1rem;
+                font-size: 0.82rem;
             }
 
             img {
@@ -297,7 +297,11 @@
                 display: inline-block;
                 height: 1em;
                 width: 1em;
-                margin: 0 auto 1em;
+                margin: 0 auto;
+
+                &:hover {
+                    cursor: pointer;
+                }
 
                 &::after, &::before {
                     /* used to create the check icon and green circle dot - visible when product is selected */
@@ -321,7 +325,6 @@
 
                 &::after {
                     /* check icon */
-                    background: url(../img/edd-compare-products-check.svg) no-repeat center center;
                     background-size: 1.5em 1.5em;
                     opacity: 0;
                     -webkit-transition: opacity 0.3s;
@@ -440,6 +443,11 @@
             .top-info {
                 width: 13.1em;
                 padding: 0.75em 1.25em 1.25em;
+
+                .check {
+                    margin-bottom: 0.25em;
+                }
+                
             }
 
             .features {
@@ -451,6 +459,7 @@
                     height: 6.86em;
                     padding-top: 0.5em;
                     padding-left: 0.5em;
+
                 }
 
                 .edd-compare-products-features-list-labels {

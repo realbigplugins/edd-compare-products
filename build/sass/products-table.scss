@@ -113,6 +113,7 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
+                border-left: none;
             }
 
             &::after {
@@ -147,6 +148,7 @@
                     text-overflow: ellipsis;
                     overflow: hidden;
                     padding-left: 0.5em;
+                    border-left: none;
                 }
 
             }

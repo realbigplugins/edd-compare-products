@@ -78,7 +78,8 @@
         height: 6.87em;
         white-space: nowrap;
         text-overflow: ellipsis;
-        overflow: hidden; }
+        overflow: hidden;
+        border-left: none; }
       .edd-compare-products .edd-compare-products-table .features::after {
         /* color gradient on the right of .features -  visible while scrolling inside the .edd-compare-products-table */
         content: '';
@@ -106,7 +107,8 @@
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
-          padding-left: 0.5em; }
+          padding-left: 0.5em;
+          border-left: none; }
       .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li, .edd-compare-products .edd-compare-products-table .features .top-info {
         /* fixed left column - items */
         font-size: 1.6rem;

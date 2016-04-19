@@ -49,28 +49,52 @@ function edd_compare_products_shortcode( $atts ) {
                     
                     <div class="features">
                         
-                        <div class="top-info">
-                             Title
-                        </div>
+                    <?php if ( $fields ) :
                         
-                    <?php if ( $fields ) : ?>
+                        $list_labels = '';
+        
+                        // To check if we've added the Thumbnail Row at the top
+                        $thumbnail_title = false;
+
+                        foreach( $fields as $field ) : 
+                            
+                            if ( $field['meta_field'] == 'thumbnail' ) : ?>
+        
+                            <div class="top-info">
+
+                                <?php echo ( $field['label'] ) ? $field['label'] : $field['meta_field']; ?>
+
+                            </div>
+                                
+                            <?php 
+        
+                            $thumbnail_title = true;
+        
+                            endif;
+        
+                            if ( $field['meta_field'] == 'thumbnail' ) continue;
+        
+                            $list_labels .= '<li>' . ( ( $field['label'] ) ? $field['label'] : $field['meta_field'] ) . '</li>';
+                            
+                        endforeach;
+                        
+                        if ( ! $thumbnail_title ) : ?>
+        
+                            <div class="top-info">
+
+                                Title
+
+                            </div>
+        
+                        <?php endif; ?>
                         
                         <ul class="edd-compare-products-features-list-labels">
-
-                        <?php foreach( $fields as $field ) : 
                             
-                            if ( $field['meta_field'] == 'thumbnail' ) continue; ?>
-                            
-                            <li>
-                                <?php echo ( $field['label'] ) ? $field['label'] : $field['meta_field']; ?>
-                            </li>
-                            
-                        <?php endforeach; ?>
+                            <?php echo $list_labels; ?>
                             
                         </ul>
                         
                     <?php endif; ?>
-                    
                         
                     </div> <!-- end .features -->
 
@@ -96,8 +120,15 @@ function edd_compare_products_shortcode( $atts ) {
                                 if ( $field['meta_field'] == 'thumbnail' ) : ?>
 
                                 <div class="top-info">
-                                    <?php echo get_the_post_thumbnail( $download_id, array( 75, 75 ) ); ?>
-                                    <h3><a href="<?php echo get_permalink( $download_id ); ?>"><?php echo get_the_title( $download_id ); ?></a></h3>
+                                    
+                                    <?php if ( has_post_thumbnail( $download_id ) ) : ?>
+                                        <a href="<?php echo get_permalink( $download_id ); ?>" title="<?php echo get_the_title( $download_id ); ?>">
+                                            <?php echo get_the_post_thumbnail( $download_id, array( 75, 75 ) ); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    
+                                    <h3><a href="<?php echo get_permalink( $download_id ); ?>" title="<?php echo get_the_title( $download_id ); ?>"><?php echo get_the_title( $download_id ); ?></a></h3>
+                                    
                                 </div>
 
                                 <?php elseif ( $field['meta_field'] == 'edd_price' ||

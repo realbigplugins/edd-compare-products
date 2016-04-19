@@ -46,7 +46,7 @@
     }
 
     .edd-compare-products-header {
-        padding: 0 5% 25px;
+        padding: 0 5% 1.5em;
 
         &::after {
             clear: both;
@@ -70,7 +70,7 @@
                 padding: .6em 1.5em;
                 color: #ffffff;
                 background-color: #cccccc;
-                border-radius: 3px;
+                border-radius: 0.2em;
                 margin-left: 1em;
                 cursor: not-allowed;
                 -webkit-transition: background-color 0.3s;
@@ -100,15 +100,19 @@
             left: 0;
             border-style: solid;
             border-color: #e6e6e6;
-            border-top-width: 1px;
-            border-bottom-width: 1px;
+            border-top-width: 0.06em;
+            border-bottom-width: 0.06em;
             background-color: #fafafa;
             opacity: .95;
-            width: 126px;
+            width: 10em;
             height: 98%;
 
             .top-info {
-                width: 120px;
+                width: 6em;
+                height: 6.87em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
 
             &::after {
@@ -117,7 +121,7 @@
                 position: absolute;
                 top: 0;
                 left: 100%;
-                width: 4px;
+                width: 0.25em;
                 height: 100%;
                 background-color: transparent;
                 background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.06), transparent);
@@ -136,12 +140,13 @@
                     font-weight: bold;
                     border-color: #e6e6e6;
                     border-style: solid;
-                    border-top-width: 1px;
-                    border-right-width: 1px;
+                    border-top-width: 0.06em;
+                    border-right-width: 0.06em;
                     /* truncate text with dots */
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
+                    padding-left: 0.5em;
                 }
 
             }
@@ -153,6 +158,9 @@
                 /* set line-height value equal to font-size of text inside product cells */
                 line-height: 1.6;
                 text-align: left;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
 
         }
@@ -164,20 +172,20 @@
             -webkit-overflow-scrolling: touch;
             border-style: solid;
             border-color: #e6e6e6;
-            border-top-width: 1px;
-            border-bottom-width: 1px;
+            border-top-width: 0.06em;
+            border-bottom-width: 0.06em;
 
             .edd-compare-products-columns {
 
                 /* products list wrapper */
                 list-style: none;
-                width: 1200px;
-                margin-left: 120px;
+                width: 75em;
+                margin-left: 9.5em;
 
                 .product {
                     position: relative;
                     float: left;
-                    width: 120px;
+                    width: 9.5em;
                     text-align: center;
                     -webkit-transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
                     -moz-transition: opacity 0.3s, visibility 0.3s, -moz-transform 0.3s;
@@ -194,8 +202,8 @@
                             font-weight: bold;
                             border-color: #e6e6e6;
                             border-style: solid;
-                            border-top-width: 1px;
-                            border-right-width: 1px;
+                            border-top-width: 0.06em;
+                            border-right-width: 0.06em;
                         }
 
                     }
@@ -251,24 +259,24 @@
 
         .top-info {
             position: relative;
-            height: 177px;
+            height: 11em;
             text-align: center;
-            padding: 1.25em 1.25em;
+            padding: 0.5em;
             border-color: #e6e6e6;
             border-style: solid;
-            border-right-width: 1px;
+            border-right-width: 0.06em;
             -webkit-transition: height 0.3s;
             -moz-transition: height 0.3s;
             transition: height 0.3s;
             cursor: pointer;
-            width: 120px;
+            width: 9.5em;
             cursor: auto;
             background: #fafafa;
 
             h3 {
-                padding: 1.25em 0 0.625em;
+                padding: 0.625em 0 0.625em;
                 font-weight: bold;
-                font-size: 1.4rem;
+                font-size: 1rem;
             }
 
             img {
@@ -287,8 +295,8 @@
             .check {
                 position: relative;
                 display: inline-block;
-                height: 16px;
-                width: 16px;
+                height: 1em;
+                width: 1em;
                 margin: 0 auto 1em;
 
                 &::after, &::before {
@@ -304,7 +312,7 @@
                 &::before {
                     /* green circle dot */
                     border-radius: 50%;
-                    border: 1px solid #e6e6e6;
+                    border: 0.06em solid #e6e6e6;
                     background: #ffffff;
                     -webkit-transition: background-color 0.3s, -webkit-transform 0.3s, border-color 0.3s;
                     -moz-transition: background-color 0.3s, -moz-transform 0.3s, border-color 0.3s;
@@ -314,7 +322,7 @@
                 &::after {
                     /* check icon */
                     background: url(../img/edd-compare-products-check.svg) no-repeat center center;
-                    background-size: 24px 24px;
+                    background-size: 1.5em 1.5em;
                     opacity: 0;
                     -webkit-transition: opacity 0.3s;
                     -moz-transition: opacity 0.3s;
@@ -332,21 +340,21 @@
                 position: absolute;
                 z-index: 2;
                 top: 0;
-                right: 15px;
-                -webkit-transform: translateY(55px);
-                -moz-transform: translateY(55px);
-                -ms-transform: translateY(55px);
-                -o-transform: translateY(55px);
-                transform: translateY(55px);
+                right: 1em;
+                -webkit-transform: translateY(3.4em);
+                -moz-transform: translateY(3.4em);
+                -ms-transform: translateY(3.4em);
+                -o-transform: translateY(3.4em);
+                transform: translateY(3.4em);
                 /* replace text with image */
                 overflow: hidden;
                 text-indent: 100%;
                 white-space: nowrap;
                 color: transparent;
-                height: 60px;
-                width: 40px;
-                background: rgba(64, 64, 66, 0.8) url("../img/edd-compare-products-arrow.svg") no-repeat center center;
-                border-radius: 3px;
+                height: 3.75em;
+                width: 2.5em;
+                background: rgba(64, 64, 66, 0.8) url("../img/compare-arrow.svg") no-repeat center center;
+                border-radius: 0.2em;
                 -webkit-transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
                 -moz-transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, -moz-transform 0.3s;
                 transition: background-color 0.3s, opacity 0.3s, visibility 0.3s, transform 0.3s;
@@ -357,13 +365,13 @@
                 }
 
                 &.prev {
-                    left: 120px;
+                    left: 7.5em;
                     right: auto;
-                    -webkit-transform: translateY(55px) translateX(15px) rotate(180deg);
-                    -moz-transform: translateY(55px) translateX(15px) rotate(180deg);
-                    -ms-transform: translateY(55px) translateX(15px) rotate(180deg);
-                    -o-transform: translateY(55px) translateX(15px) rotate(180deg);
-                    transform: translateY(55px) translateX(15px) rotate(180deg);
+                    -webkit-transform: translateY(3.4em) translateX(3.4em) rotate(180deg);
+                    -moz-transform: translateY(3.4em) translateX(3.4em) rotate(180deg);
+                    -ms-transform: translateY(3.4em) translateX(3.4em) rotate(180deg);
+                    -o-transform: translateY(3.4em) translateX(3.4em) rotate(180deg);
+                    transform: translateY(3.4em) translateX(3.4em) rotate(180deg);
                 }
 
             }
@@ -430,19 +438,23 @@
         .edd-compare-products-table {
 
             .top-info {
-                width: 210px;
+                width: 13.1em;
+                padding: 0.75em 1.25em 1.25em;
             }
 
             .features {
 
-                width: 216px;
+                width: 13.5em;
 
                 .top-info {
-                    width: 210px;
+                    width: 8.2em;
+                    height: 6.86em;
+                    padding-top: 0.5em;
+                    padding-left: 0.5em;
                 }
 
                 .edd-compare-products-features-list-labels {
-                    width: 210px;
+                    width: 13.1em;
                 }
 
             }
@@ -451,10 +463,10 @@
 
                 .edd-compare-products-columns {
                     width: 2480px;
-                    margin-left: 210px;
+                    margin-left: 13.1em;
 
                     .product {
-                        width: 210px;
+                        width: 13.1em;
                     }
 
                 }
@@ -464,19 +476,19 @@
             .edd-compare-products-navigation {
 
                 a {
-                    -webkit-transform: translateY(100px);
-                    -moz-transform: translateY(100px);
-                    -ms-transform: translateY(100px);
-                    -o-transform: translateY(100px);
-                    transform: translateY(100px);
+                    -webkit-transform: translateY(6.25em);
+                    -moz-transform: translateY(6.25em);
+                    -ms-transform: translateY(6.25em);
+                    -o-transform: translateY(6.25em);
+                    transform: translateY(6.25em);
 
                     &.prev {
-                        left: 210px;
-                        -webkit-transform: translateY(100px) translateX(15px) rotate(180deg);
-                        -moz-transform: translateY(100px) translateX(15px) rotate(180deg);
-                        -ms-transform: translateY(100px) translateX(15px) rotate(180deg);
-                        -o-transform: translateY(100px) translateX(15px) rotate(180deg);
-                        transform: translateY(100px) translateX(15px) rotate(180deg);
+                        left: 13.1em;
+                        -webkit-transform: translateY(6.25em) translateX(1em) rotate(180deg);
+                        -moz-transform: translateY(6.25em) translateX(1em) rotate(180deg);
+                        -ms-transform: translateY(6.25em) translateX(1em) rotate(180deg);
+                        -o-transform: translateY(6.25em) translateX(1em) rotate(180deg);
+                        transform: translateY(6.25em) translateX(1em) rotate(180deg);
                     }
 
                 }

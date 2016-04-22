@@ -71,8 +71,7 @@
       border-bottom-width: 0.06em;
       background-color: #fafafa;
       opacity: .95;
-      width: 10em;
-      height: 98%; }
+      width: 10em; }
       .edd-compare-products .edd-compare-products-table .features .top-info {
         width: 6em;
         height: 6.87em;
@@ -113,8 +112,6 @@
         /* fixed left column - items */
         font-size: 1.6rem;
         font-weight: bold;
-        /* set line-height value equal to font-size of text inside product cells */
-        line-height: 1.6;
         text-align: left;
         white-space: nowrap;
         text-overflow: ellipsis;

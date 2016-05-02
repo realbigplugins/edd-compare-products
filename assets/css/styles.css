@@ -22,7 +22,10 @@
   background-color: #404042; }
 
 .edd-compare-products {
-  margin-bottom: 6em; }
+  margin-bottom: 6em;
+  font-size: 16px; }
+  .edd-compare-products li, .edd-compare-products div {
+    border: initial; }
   .edd-compare-products::after {
     /* never visible - this is used in jQuery to check the current Breakpoint */
     display: none;
@@ -72,7 +75,7 @@
       background-color: #fafafa;
       opacity: .95;
       width: 10em;
-      height: 98%; }
+      height: 92%; }
       .edd-compare-products .edd-compare-products-table .features .top-info {
         width: 6em;
         height: 6.87em;
@@ -113,8 +116,6 @@
         /* fixed left column - items */
         font-size: 1.6rem;
         font-weight: bold;
-        /* set line-height value equal to font-size of text inside product cells */
-        line-height: 1.6;
         text-align: left;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -285,7 +286,7 @@
     .edd-compare-products .edd-compare-products-table .top-info .check {
       margin-bottom: 0.25em; }
   .edd-compare-products .edd-compare-products-table .features {
-    width: 13.5em; }
+    width: 13.45em; }
     .edd-compare-products .edd-compare-products-table .features .top-info {
       width: 8.2em;
       height: 6.86em;

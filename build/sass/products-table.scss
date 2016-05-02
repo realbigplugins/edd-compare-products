@@ -33,6 +33,11 @@
 .edd-compare-products {
 
     margin-bottom: 6em;
+    font-size: 16px;
+    
+    li, div {
+        border: initial;
+    }
 
     &::after {
         /* never visible - this is used in jQuery to check the current Breakpoint */
@@ -105,7 +110,7 @@
             background-color: #fafafa;
             opacity: .95;
             width: 10em;
-            height: 98%;
+            height: 92%;
 
             .top-info {
                 width: 6em;
@@ -157,8 +162,6 @@
                 /* fixed left column - items */
                 font-size: 1.6rem;
                 font-weight: bold;
-                /* set line-height value equal to font-size of text inside product cells */
-                line-height: 1.6;
                 text-align: left;
                 white-space: nowrap;
                 text-overflow: ellipsis;
@@ -454,7 +457,7 @@
 
             .features {
 
-                width: 13.5em;
+                width: 13.45em;
 
                 .top-info {
                     width: 8.2em;

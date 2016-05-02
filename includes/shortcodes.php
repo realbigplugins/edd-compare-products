@@ -79,7 +79,7 @@ function edd_compare_products_shortcode( $atts ) {
                         endforeach;
         
                         // Blank entry for the Purchase Button
-                        $list_labels .= '<li>&nbsp;</li>';
+                        $list_labels .= '<li class="buy-buttons"><div class="edd_purchase_submit_wrapper"><a class="edd-add-to-cart button">&nbsp;</a></div></li>';
                         
                         if ( ! $thumbnail_title ) : ?>
         

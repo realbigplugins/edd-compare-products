@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                 map: true
             },
             front: {
-                src: 'assets/css/style.css'
+                src: 'assets/css/styles.css'
             },
             admin: {
                 src: 'assets/css/admin.css'

@@ -119,7 +119,6 @@
             background-color: #fafafa;
             opacity: .95;
             width: 10em;
-            height: 100%;
 
             .top-info {
                 width: 6em;
@@ -470,6 +469,13 @@
     .edd_purchase_submit_wrapper {
         margin-top: 0.5em !important;
         margin-bottom: 0.5em !important;
+        
+        a {
+            font-size: 0.5em;
+            min-width: 0;
+            line-height: 0.5em;
+        }
+        
     }
 
 }

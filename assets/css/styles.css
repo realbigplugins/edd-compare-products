@@ -78,8 +78,7 @@
       border-bottom-width: 0.06em;
       background-color: #fafafa;
       opacity: .95;
-      width: 10em;
-      height: 100%; }
+      width: 10em; }
       .edd-compare-products .edd-compare-products-table .features .top-info {
         width: 6em;
         height: 6.87em;
@@ -275,6 +274,10 @@
   .edd-compare-products .edd_purchase_submit_wrapper {
     margin-top: 0.5em !important;
     margin-bottom: 0.5em !important; }
+    .edd-compare-products .edd_purchase_submit_wrapper a {
+      font-size: 0.5em;
+      min-width: 0;
+      line-height: 0.5em; }
 
 /* Desktop Specific Overrides */
 @media only screen and (min-width: 1170px) {

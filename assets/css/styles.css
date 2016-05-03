@@ -74,8 +74,7 @@
           cursor: pointer;
           background-color: #9dc997; }
   .edd-compare-products .edd-compare-products-table {
-    position: relative;
-    overflow: hidden; }
+    position: relative; }
     .edd-compare-products .edd-compare-products-table .features {
       /* fixed left column - product properties list */
       position: absolute;
@@ -88,7 +87,8 @@
       border-bottom-width: 0.06em;
       background-color: #fafafa;
       opacity: .95;
-      width: 10em; }
+      width: 10em;
+      height: 100%; }
       .edd-compare-products .edd-compare-products-table .features .top-info {
         width: auto;
         height: 6.87em;

@@ -121,7 +121,7 @@
             width: 10em;
 
             .top-info {
-                width: 6em;
+                width: auto;
                 height: 6.87em;
                 white-space: nowrap;
                 text-overflow: ellipsis;
@@ -150,7 +150,6 @@
                 margin-bottom: 0;
 
                 li {
-                    font-size: 1.6em;
                     font-weight: bold;
                     border-color: #e6e6e6;
                     border-style: solid;
@@ -210,7 +209,7 @@
                 .product {
                     position: relative;
                     float: left;
-                    width: 9.5em;
+                    width: 12em;
                     text-align: center;
                     -webkit-transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
                     -moz-transition: opacity 0.3s, visibility 0.3s, -moz-transform 0.3s;
@@ -295,7 +294,7 @@
             -moz-transition: height 0.3s;
             transition: height 0.3s;
             cursor: pointer;
-            width: 9.5em;
+            width: 12em;
             cursor: auto;
             background: #fafafa;
 
@@ -511,6 +510,10 @@
 
                 .edd-compare-products-features-list-labels {
                     width: 100%;
+                }
+                
+                .edd-compare-products-features-list-labels li, .top-info {
+                    font-size: 1.6em;
                 }
 
             }

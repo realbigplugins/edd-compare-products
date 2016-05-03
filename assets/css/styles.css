@@ -80,7 +80,7 @@
       opacity: .95;
       width: 10em; }
       .edd-compare-products .edd-compare-products-table .features .top-info {
-        width: 6em;
+        width: auto;
         height: 6.87em;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -103,7 +103,6 @@
         margin-left: 0;
         margin-bottom: 0; }
         .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li {
-          font-size: 1.6em;
           font-weight: bold;
           border-color: #e6e6e6;
           border-style: solid;
@@ -143,7 +142,7 @@
         .edd-compare-products .edd-compare-products-table .edd-compare-products-wrapper .edd-compare-products-columns .product {
           position: relative;
           float: left;
-          width: 9.5em;
+          width: 12em;
           text-align: center;
           -webkit-transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
           transition: opacity 0.3s, visibility 0.3s, transform 0.3s; }
@@ -183,7 +182,7 @@
       -webkit-transition: height 0.3s;
       transition: height 0.3s;
       cursor: pointer;
-      width: 9.5em;
+      width: 12em;
       cursor: auto;
       background: #fafafa; }
       .edd-compare-products .edd-compare-products-table .top-info h3 {
@@ -296,6 +295,8 @@
       padding-bottom: 0.75em; }
     .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels {
       width: 100%; }
+    .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li, .edd-compare-products .edd-compare-products-table .features .top-info {
+      font-size: 1.6em; }
   .edd-compare-products .edd-compare-products-table .edd-compare-products-wrapper .edd-compare-products-columns {
     width: 2480px;
     margin-left: 12.8em; }

@@ -101,7 +101,8 @@
       .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels {
         list-style: none;
         margin-left: 0;
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        width: 100%; }
         .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li {
           font-weight: bold;
           border-color: #e6e6e6;
@@ -182,7 +183,7 @@
       -webkit-transition: height 0.3s;
       transition: height 0.3s;
       cursor: pointer;
-      width: 12em;
+      width: auto;
       cursor: auto;
       background: #fafafa; }
       .edd-compare-products .edd-compare-products-table .top-info h3 {

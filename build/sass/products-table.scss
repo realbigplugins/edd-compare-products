@@ -148,6 +148,7 @@
                 list-style: none;
                 margin-left: 0;
                 margin-bottom: 0;
+                width: 100%;
 
                 li {
                     font-weight: bold;
@@ -294,7 +295,7 @@
             -moz-transition: height 0.3s;
             transition: height 0.3s;
             cursor: pointer;
-            width: 12em;
+            width: auto;
             cursor: auto;
             background: #fafafa;
 

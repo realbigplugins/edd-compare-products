@@ -79,6 +79,12 @@
             .reset {
                 color: #404042;
                 text-decoration: underline;
+                
+                &:hover {
+                    text-decoration: none;
+                    border-bottom: none;
+                }
+                
             }
 
             .filter {

@@ -52,6 +52,9 @@
       .edd-compare-products .edd-compare-products-header .actions .reset {
         color: #404042;
         text-decoration: underline; }
+        .edd-compare-products .edd-compare-products-header .actions .reset:hover {
+          text-decoration: none;
+          border-bottom: none; }
       .edd-compare-products .edd-compare-products-header .actions .filter {
         padding: .6em 1.5em;
         color: #ffffff;

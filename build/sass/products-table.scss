@@ -119,6 +119,7 @@
             background-color: #fafafa;
             opacity: .95;
             width: 10em;
+            height: 100%;
 
             .top-info {
                 width: 6em;
@@ -165,11 +166,11 @@
                     
                     &.buy-buttons {
                         .edd_purchase_submit_wrapper {
-                            margin-bottom: 0.2em !important;
                             
                             a {
                                 text-decoration: none;
                                 box-shadow: none;
+                                visibility: hidden;
                             }
                             
                         }

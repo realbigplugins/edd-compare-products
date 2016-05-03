@@ -78,7 +78,8 @@
       border-bottom-width: 0.06em;
       background-color: #fafafa;
       opacity: .95;
-      width: 10em; }
+      width: 10em;
+      height: 100%; }
       .edd-compare-products .edd-compare-products-table .features .top-info {
         width: 6em;
         height: 6.87em;
@@ -115,11 +116,10 @@
           overflow: hidden;
           padding-left: 0.5em;
           border-left: none; }
-          .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li.buy-buttons .edd_purchase_submit_wrapper {
-            margin-bottom: 0.2em !important; }
-            .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li.buy-buttons .edd_purchase_submit_wrapper a {
-              text-decoration: none;
-              box-shadow: none; }
+          .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li.buy-buttons .edd_purchase_submit_wrapper a {
+            text-decoration: none;
+            box-shadow: none;
+            visibility: hidden; }
       .edd-compare-products .edd-compare-products-table .features .edd-compare-products-features-list-labels li, .edd-compare-products .edd-compare-products-table .features .top-info {
         /* fixed left column - items */
         font-size: 1.6em;

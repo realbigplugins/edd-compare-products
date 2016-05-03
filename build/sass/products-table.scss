@@ -68,17 +68,23 @@
             content: "";
             display: table;
         }
+        
+        h2 {
+            margin-top: 0;
+        }
 
         .actions {
             float: right;
 
             .reset, .filter {
                 font-size: 1.4em;
+                border-bottom: none;
             }
 
             .reset {
                 color: #404042;
                 text-decoration: underline;
+                box-shadow: none;
                 
                 &:hover {
                     text-decoration: none;
@@ -97,6 +103,8 @@
                 -webkit-transition: background-color 0.3s;
                 -moz-transition: background-color 0.3s;
                 transition: background-color 0.3s;
+                text-decoration: none;
+                border-bottom: 0;
 
                 &.active {
                     cursor: pointer;

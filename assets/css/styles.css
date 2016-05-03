@@ -45,13 +45,17 @@
       clear: both;
       content: "";
       display: table; }
+    .edd-compare-products .edd-compare-products-header h2 {
+      margin-top: 0; }
     .edd-compare-products .edd-compare-products-header .actions {
       float: right; }
       .edd-compare-products .edd-compare-products-header .actions .reset, .edd-compare-products .edd-compare-products-header .actions .filter {
-        font-size: 1.4em; }
+        font-size: 1.4em;
+        border-bottom: none; }
       .edd-compare-products .edd-compare-products-header .actions .reset {
         color: #404042;
-        text-decoration: underline; }
+        text-decoration: underline;
+        box-shadow: none; }
         .edd-compare-products .edd-compare-products-header .actions .reset:hover {
           text-decoration: none;
           border-bottom: none; }
@@ -63,7 +67,9 @@
         margin-left: 1em;
         cursor: not-allowed;
         -webkit-transition: background-color 0.3s;
-        transition: background-color 0.3s; }
+        transition: background-color 0.3s;
+        text-decoration: none;
+        border-bottom: 0; }
         .edd-compare-products .edd-compare-products-header .actions .filter.active {
           cursor: pointer;
           background-color: #9dc997; }

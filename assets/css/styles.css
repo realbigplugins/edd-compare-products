@@ -23,7 +23,8 @@
 
 .edd-compare-products {
   margin-bottom: 6em;
-  font-size: 16px; }
+  font-size: 16px;
+  line-height: 1.6; }
   .edd-compare-products ul, .edd-compare-products li, .edd-compare-products div {
     border: initial;
     margin: 0; }
@@ -176,7 +177,7 @@
       position: relative;
       height: 11em;
       text-align: center;
-      padding: 0.25em 0.5em 0.5em;
+      padding: 0 0.5em;
       border-color: #e6e6e6;
       border-style: solid;
       border-right-width: 0.06em;
@@ -204,7 +205,8 @@
         display: inline-block;
         height: 1em;
         width: 1em;
-        margin: 0 auto; }
+        margin: 0 auto;
+        margin-top: 0.5em; }
         .edd-compare-products .edd-compare-products-table .top-info .check:hover {
           cursor: pointer; }
         .edd-compare-products .edd-compare-products-table .top-info .check::after, .edd-compare-products .edd-compare-products-table .top-info .check::before {
@@ -285,6 +287,7 @@
     width: auto;
     padding: 0.75em 1.25em 1.25em; }
     .edd-compare-products .edd-compare-products-table .top-info .check {
+      margin-top: 0;
       margin-bottom: 0.25em; }
   .edd-compare-products .edd-compare-products-table .features {
     width: 13.1em; }

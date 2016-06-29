@@ -86,6 +86,8 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 * @return      void
 		 */
 		private function hooks() {
+            // Register settings section
+            add_filter( 'edd_settings_sections_extensions', 'edd_compare_products_settings_section', 1 );
 			// Register settings
 			add_filter( 'edd_settings_extensions', 'edd_compare_products_settings', 1 );
 			// Sanitize meta fields settings

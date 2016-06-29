@@ -172,6 +172,21 @@ function edd_compare_get_meta_fields() {
 }
 
 /**
+ * Add settings section
+ *
+ * @access      public
+ * @since       1.1
+ *
+ * @param       array $settings The existing EDD settings sections array
+ *
+ * @return      array The modified EDD settings sections array
+ */
+function edd_compare_products_settings_section( $sections ) {
+    $sections['edd-compare-products-settings'] = __( 'Compare Products', 'edd-compare-products' );
+    return $sections;
+}
+
+/**
  * Add settings
  *
  * @access      public
@@ -229,6 +244,12 @@ function edd_compare_products_settings( $settings ) {
 			'type' => 'text',
 		),
 	);
+    
+    // If EDD is at version 2.5 or later...
+    if ( version_compare( EDD_VERSION, 2.5, '>=' ) ) {
+        // Place the Settings in our Settings Section
+        $new_settings = array( 'edd-compare-products-settings' => $new_settings );
+    }
 
 	return array_merge( $settings, $new_settings );
 }

@@ -16,6 +16,7 @@ function edd_compare_products_meta_fields_callback( $args ) {
 	<table id="edd_compare_fields" class="wp-list-table widefat fixed posts">
 		<thead>
 		<tr>
+            <th scope="col" class="edd_compare_field_handle"></th>
 			<th scope="col" class="edd_compare_fields"><?php _e( 'Fields', 'edd-compare-products' ); ?></th>
 			<th scope="col" class="edd_compare_field_label"><?php _e( 'Label', 'edd-compare-products' ); ?></th>
 			<th scope="col"><?php _e( 'Remove', 'edd-compare-products' ); ?></th>
@@ -24,6 +25,7 @@ function edd_compare_products_meta_fields_callback( $args ) {
 		<?php if ( ! empty( $fields ) ) : ?>
 			<?php foreach ( $fields as $key => $field ) : ?>
 				<tr>
+                    <td><span class="handle dashicons dashicons-sort"></span></td>
 					<td class="edd_compare_fields">
 						<?php
 						echo EDD()->html->select( array(
@@ -50,6 +52,7 @@ function edd_compare_products_meta_fields_callback( $args ) {
 			<?php endforeach; ?>
 		<?php else : ?>
 			<tr>
+                <td><span class="handle dashicons dashicons-sort"></span></td>
 				<td class="edd_compare_fields">
 					<?php
 					echo EDD()->html->select( array(

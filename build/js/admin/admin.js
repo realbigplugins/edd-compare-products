@@ -11,7 +11,9 @@ jQuery(document).ready(function ($) {
 
         fields: function () {
             
-            $('#edd_compare_fields tbody').sortable();
+            $('#edd_compare_fields tbody').sortable( {
+                handle: '.handle',
+            } );
             
             // Insert new field row
             $('#edd_add_compare_field').on('click', function() {

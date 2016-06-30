@@ -10,6 +10,9 @@ jQuery(document).ready(function ($) {
         },
 
         fields: function () {
+            
+            $('#edd_compare_fields tbody').sortable();
+            
             // Insert new field row
             $('#edd_add_compare_field').on('click', function() {
                 var row = $('#edd_compare_fields tr:last');

@@ -148,7 +148,7 @@ function edd_compare_products_shortcode( $atts ) {
                         <?php endforeach; // Each Field
         
                         // Buy Button
-                        $features .= '<li>' . edd_get_purchase_link( array( 'download_id' => $download_id ) ) . '</li>' ?>
+                        $features .= '<li class="buy-button">' . edd_get_purchase_link( array( 'download_id' => $download_id ) ) . '</li>' ?>
                                 
                                 <ul class="edd-compare-products-features-list">
                                     <?php echo $features; ?>

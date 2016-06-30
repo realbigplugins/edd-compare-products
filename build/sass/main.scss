@@ -1,5 +1,13 @@
 @import "products-table";
 
-.edd-compare-button {
-    text-decoration: none;
+.edd-compare-products-table {
+    
+    .edd-compare-button {
+        text-decoration: none;
+    }
+
+    .hover {
+        background-color: #e6e6e6;
+    }
+    
 }

@@ -56,7 +56,19 @@ function edd_compare_products_get_compare_url() {
  * @since 0.1
  */
 function edd_compare_products_url() {
-	$link = edd_compare_products_get_compare_url();
-	$arg = ( strpos( $link, '?' ) ) ? '&' : '?';
-	echo '<div id="edd-compare-url" style="display: none">' . $link . $arg . 'compare=</div>';
+    
+    global $edd_options;
+
+	if ( isset( $edd_options['edd-compare-products-page'] ) ) {
+		$compare_page = $edd_options['edd-compare-products-page'];
+	} else {
+		return;
+	}
+    
+    if ( is_page( $compare_page ) || ( get_post_type() == 'download' && ! is_single() ) ) {
+        $link = edd_compare_products_get_compare_url();
+        $arg = ( strpos( $link, '?' ) ) ? '&' : '?';
+        echo '<div id="edd-compare-url" style="display: none">' . $link . $arg . 'compare=</div>';
+    }
+    
 }

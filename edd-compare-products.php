@@ -57,6 +57,8 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		private function setup_constants() {
 			// Plugin version
 			define( 'EDD_COMPARE_PRODUCTS_VER', '1.1.0' );
+            // Text domain
+            define( 'EDD_Compare_Products_ID', 'edd-compare-products' );
 			// Plugin path
 			define( 'EDD_COMPARE_PRODUCTS_DIR', plugin_dir_path( __FILE__ ) );
 			// Plugin URL

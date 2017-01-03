@@ -1,0 +1,82 @@
+javascript:
+  front:
+    root: "./assets/js"
+    # filename to output
+    filename: "scripts.js"
+    vendor: 
+      - ""
+    notification: "Running JavaScript"
+    # Paths to JavaScript libraries, which are combined into one file
+    src:
+      # Paths to your own project code are here
+      # All the files in this list and in the js dir are concatenated into script.js
+      - "build/js/**/*.js"
+      - "!build/js/admin/**/*.js"
+      - "!build/js/tinymce/**/*.js"
+  admin:
+    root: "./assets/js"
+    filename: "admin.js"
+    vendor:
+      - "build/vendor/js/jquery.textfit.js"
+    notification: "Running Admin JavaScript"
+    src:
+      - "build/js/admin/**/*.js"
+  tinymce:
+    root: "./tinymce/"
+    notification: "Running TinyMCE JavaScript"
+    src:
+      - "build/js/tinymce/**/*.js"
+
+sass:
+  # Autoprefixer will make sure your CSS works with these browsers
+  compatibility:
+    - "last 2 versions"
+    - "ie >= 9"
+  front:
+    root: "./assets/css"
+    filename: "styles.css"
+    vendor: 
+      - ""
+    notification: "Running Sass"
+    src: "build/sass/main.scss"
+  admin:
+    root: "./assets/css"
+    filename: "admin.css"
+    vendor:
+      - ""
+    notification: "Running Admin Sass"
+    src: "build/sass/admin/main.scss"
+
+watch:
+  javascript:
+    front:
+      - "build/js/**/*.js"
+      - "!build/js/admin/**/*.js"
+      - "!build/js/tinymce/**/*.js"
+    admin: "build/js/admin/**/*.js"
+    tinymce: "build/js/tinymce/**/*.js"
+  sass: 
+    front: 
+      - "build/sass/**/*.scss"
+      - "!build/sass/admin/**/*.scss"
+    admin: "build/sass/admin/**/*.scss"
+
+release:
+  type: 'plugin'
+  languagesDir: './languages/'
+  files:
+    - "./**/*.*"
+    - "!./**/*.map"
+    - "!./build/**/*.*"
+    - "!./**/.git/**"
+    - "!./**/.gitignore"
+    - "!./**/.gitmodules"
+    - "!./**/gulpfile.js"
+    - "!./**/gruntfile.js"
+    - "!./gulp/**/*.*"
+    - "!./**/package.json"
+    - "!./**/bower.json"
+    - "!./node_modules/**/*.*"
+    - "!./**/bower_components/**/*.*"
+    - "!./README.md"
+    - "!./*.zip"

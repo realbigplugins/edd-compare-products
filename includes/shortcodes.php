@@ -185,12 +185,12 @@ function edd_compare_products_shortcode( $atts ) {
             ob_end_clean();
                                     
         else :
-            $output = __( 'The ' . edd_get_label_singular() . ' IDs provided are invalid. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
+            $output = __( 'The ' . edd_get_label_singular() . ' IDs provided are invalid. Please select some ' . edd_get_label_plural() . ' to compare.', EDD_Compare_Products_ID );
         endif; // If Download IDS
                                     
 	}  // If $atts['ids']
     else {
-		$output = __( 'There\'s currently nothing to compare. Please select some ' . edd_get_label_plural() . ' to compare.', 'edd-compare-products' );
+		$output = __( 'There\'s currently nothing to compare. Please select some ' . edd_get_label_plural() . ' to compare.', EDD_Compare_Products_ID );
 	}
 
 	return $output;

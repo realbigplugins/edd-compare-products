@@ -114,20 +114,20 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			$lang_dir = EDD_COMPARE_PRODUCTS_DIR . '/languages/';
 			$lang_dir = apply_filters( 'edd_compare_products_languages_directory', $lang_dir );
 			// Traditional WordPress plugin locale filter
-			$locale = apply_filters( 'plugin_locale', get_locale(), 'edd-compare-products' );
-			$mofile = sprintf( '%1$s-%2$s.mo', 'edd-compare-products', $locale );
+			$locale = apply_filters( 'plugin_locale', get_locale(), EDD_Compare_Products_ID );
+			$mofile = sprintf( '%1$s-%2$s.mo', EDD_Compare_Products_ID, $locale );
 			// Setup paths to current locale file
 			$mofile_local  = $lang_dir . $mofile;
 			$mofile_global = WP_LANG_DIR . '/edd-compare-products/' . $mofile;
 			if ( file_exists( $mofile_global ) ) {
 				// Look in global /wp-content/languages/edd-compare-products/ folder
-				load_textdomain( 'edd-compare-products', $mofile_global );
+				load_textdomain( EDD_Compare_Products_ID, $mofile_global );
 			} elseif ( file_exists( $mofile_local ) ) {
 				// Look in local /wp-content/plugins/edd-compare-products/languages/ folder
-				load_textdomain( 'edd-compare-products', $mofile_local );
+				load_textdomain( EDD_Compare_Products_ID, $mofile_local );
 			} else {
 				// Load the default language files
-				load_plugin_textdomain( 'edd-compare-products', false, $lang_dir );
+				load_plugin_textdomain( EDD_Compare_Products_ID, false, $lang_dir );
 			}
 		}
 

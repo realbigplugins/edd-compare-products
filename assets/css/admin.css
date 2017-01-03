@@ -1,12 +1,2 @@
-.edd_compare_field_label input.regular-text {
-  width: 100%; }
-
-#edd_compare_fields th {
-  padding-left: 12px; }
-
-#edd_compare_fields th.edd_compare_field_handle {
-  width: 0.5em; }
-
-#edd_compare_fields span.handle:hover {
-  cursor: move; }
+.edd_compare_field_label input.regular-text{width:100%}#edd_compare_fields th{padding-left:12px}#edd_compare_fields th.edd_compare_field_handle{width:.5em}#edd_compare_fields span.handle:hover{cursor:move}
 /*# sourceMappingURL=admin.css.map */

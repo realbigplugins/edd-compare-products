@@ -349,6 +349,9 @@
 .edd-compare-products-table .edd-compare-button {
   text-decoration: none; }
 
+.edd-compare-products-table .difference {
+  background-color: pink; }
+
 .edd-compare-products-table .hover {
   background-color: #e6e6e6; }
 /*# sourceMappingURL=styles.css.map */

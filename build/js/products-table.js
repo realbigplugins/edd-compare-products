@@ -69,6 +69,7 @@ jQuery( function( $ ) {
                 self.products.removeClass('selected');
             }
             self.selectedproductsNumber = 0;
+            $( self.element ).trigger( 'resetFilters' );
             self.upadteFilterBtn();
         });
 
@@ -166,6 +167,9 @@ jQuery( function( $ ) {
             selectedProducts.attr('style', '');
             self.updateNavigationVisibility(0);
         }
+        
+        $( self.element ).trigger( 'filtered' );
+        
     }
 
     productsTable.prototype.resetProductsVisibility = function() {

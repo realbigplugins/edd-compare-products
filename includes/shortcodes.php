@@ -114,6 +114,24 @@ function edd_compare_products_shortcode( $atts ) {
                         if ( is_object( $download ) ) : ?>
         
                             <li class="product">
+                                
+                                <?php if ( ! $thumbnail_title ) : ?>
+                                
+                                    <div class="top-info">
+                                    
+                                        <div class="check"></div>
+
+                                        <?php if ( has_post_thumbnail( $download_id ) ) : ?>
+                                            <a href="<?php echo get_permalink( $download_id ); ?>" title="<?php echo get_the_title( $download_id ); ?>">
+                                                <?php echo get_the_post_thumbnail( $download_id, array( 75, 75 ) ); ?>
+                                            </a>
+                                        <?php endif; ?>
+
+                                        <h3><a href="<?php echo get_permalink( $download_id ); ?>" title="<?php echo get_the_title( $download_id ); ?>"><?php echo get_the_title( $download_id ); ?></a></h3>
+
+                                    </div>
+                                
+                                <?php endif; ?>
 
                         <?php foreach ( $fields as $field ) :
 

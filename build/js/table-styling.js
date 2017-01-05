@@ -4,11 +4,13 @@ jQuery( function( $ ) {
         
         var row = $( this ).index();
             
-        $( this ).not( '.buy-button' ).addClass( 'hover' );
+        $( this ).not( '.buy-button' ).not( '[id^="edd_price_option_"]' ).addClass( 'hover' );
+        
+        if ( $( this ).hasClass( '.buy-button' ) || ( $( this ).attr( 'id' ) !== undefined && $( this ).attr( 'id' ).indexOf( 'edd_price_option_' ) > -1 ) ) return false;
         
         $( '.edd-compare-products-features-list-labels, .edd-compare-products-features-list' ).each( function( index, element ) { 
             
-            $( element ).children().not( '.buy-button' ).eq( row ).addClass( 'hover' );
+            $( element ).children().not( '.buy-button' ).not( '[id^="edd_price_option_"]' ).eq( row ).addClass( 'hover' );
             
         } );
         
@@ -18,11 +20,13 @@ jQuery( function( $ ) {
         
         var row = $( this ).index();
         
-        $( this ).not( '.buy-button' ).removeClass( 'hover' );
+        $( this ).not( '.buy-button' ).not( '[id^="edd_price_option_"]' ).removeClass( 'hover' );
+        
+        if ( $( this ).hasClass( '.buy-button' ) || ( $( this ).attr( 'id' ) !== undefined && $( this ).attr( 'id' ).indexOf( 'edd_price_option_' ) > -1 ) ) return false;
         
         $( '.edd-compare-products-features-list-labels, .edd-compare-products-features-list' ).each( function( index, element ) { 
             
-            $( element ).children().not( '.buy-button' ).eq( row ).removeClass( 'hover' );
+            $( element ).children().not( '.buy-button' ).not( '[id^="edd_price_option_"]' ).eq( row ).removeClass( 'hover' );
             
         } );
         

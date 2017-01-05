@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function edd_compare_products_add_compare_button( $purchase_form, $args ) {
 
-	if ( edd_compare_products_get_compare_url() == false || is_single() ) {
+	if ( edd_compare_products_get_compare_url() === false || get_post_type() !== 'download' ) {
 		return $purchase_form;
 	}
 
@@ -65,7 +65,7 @@ function edd_compare_products_url() {
 		return;
 	}
     
-    if ( is_page( $compare_page ) || ( get_post_type() == 'download' && ! is_single() ) ) {
+    if ( is_page( $compare_page ) || ( get_post_type() == 'download' ) ) {
         $link = edd_compare_products_get_compare_url();
         $arg = ( strpos( $link, '?' ) ) ? '&' : '?';
         echo '<div id="edd-compare-url" style="display: none">' . $link . $arg . 'compare=</div>';

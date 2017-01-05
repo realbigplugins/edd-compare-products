@@ -47,6 +47,7 @@
     
     ul {
         padding: 0 !important; // Fix for twentythirteen
+        line-height: 1.6 !important; // Fix for Divi
     }
 
     &::after {
@@ -161,6 +162,7 @@
             .edd-compare-products-features-list-labels {
 
                 list-style: none;
+                list-style-type: none !important;
                 margin-left: 0;
                 margin-bottom: 0;
                 width: 100%;
@@ -219,6 +221,7 @@
 
                 /* products list wrapper */
                 list-style: none;
+                list-style-type: none !important;
                 width: 75em;
                 margin-left: 9.5em;
 
@@ -235,6 +238,7 @@
 
                         width: 100%;
                         list-style: none;
+                        list-style-type: none !important;
                         margin-left: 0;
                         margin-bottom: 0;
 
@@ -381,6 +385,7 @@
 
         .edd-compare-products-navigation {
             list-style: none;
+            list-style-type: none !important;
 
             a {
                 position: absolute;

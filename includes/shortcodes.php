@@ -159,7 +159,10 @@ function edd_compare_products_shortcode( $atts ) {
 
                                 else :
         
-                                    $features .= '<li>' . get_post_meta( $download_id, $field['meta_field'], true ) . '</li>';
+                                    $feature = get_post_meta( $download_id, $field['meta_field'], true );
+        
+                                    // Ensure that a value is shown
+                                    $features .= '<li>' . ( ( $feature !== false && $feature !== '' ) ? $feature : '&nbsp;' ) . '</li>';
 
                                 endif; ?>
 

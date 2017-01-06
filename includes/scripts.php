@@ -46,7 +46,7 @@ function edd_compare_products_enqueue() {
 		return;
 	}
 
-	if ( is_page( $compare_page ) || ( is_single() ) ) {
+	if ( is_page( $compare_page ) || ( is_single() ) || ( is_archive() ) ) {
 		edd_compare_products_scripts();
 	}
 }

@@ -94,8 +94,13 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 			add_filter( 'edd_settings_extensions', 'edd_compare_products_settings', 1 );
 			// Sanitize meta fields settings
 			add_filter( 'edd_settings_extensions_sanitize', 'edd_compare_settings_sanitize_meta_fields' );
-			// Add compare button to lists of downloads
-			add_filter( 'edd_purchase_download_form', 'edd_compare_products_add_compare_button', 10, 2 );
+            
+			// Add compare button to lists of downloads within Archives
+			add_filter( 'edd_purchase_download_form', 'edd_compare_products_add_compare_button_archive', 10, 2 );
+            
+            // Add compare button to lists of downloads within the [downloads] shortcode
+            add_action( 'edd_download_after', 'edd_compare_products_add_compare_button_downloads_shortcode' );
+            
 			// Add URL container in footer
 			add_action( 'wp_footer', 'edd_compare_products_url' );
 			// Handle licensing

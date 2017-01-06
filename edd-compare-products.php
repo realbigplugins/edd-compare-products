@@ -3,7 +3,7 @@
 Plugin Name: Easy Digital Downloads - Compare Products
 Plugin URI: https://easydigitaldownloads.com/extensions/compare-products
 Description: Allows helpful product comparison tables to be easily generated.
-Version: 1.1.0
+Version: 1.1.1
 Author: Kyle Maurer
 Author URI: http://realbigmarketing.com/staff/kyle
 License: GPL2

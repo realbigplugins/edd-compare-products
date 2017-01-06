@@ -102,10 +102,10 @@ msgstr ""
 msgid "After someone has selected the items they would like to compare, the buttons display a message. The default is \"Go to Comparison\"."
 msgstr ""
 
-#: includes/shortcodes.php:188
+#: includes/shortcodes.php:209
 msgid "The .edd_get_label_singular. IDs provided are invalid. Please select some .edd_get_label_plural. to compare."
 msgstr ""
 
-#: includes/shortcodes.php:193
+#: includes/shortcodes.php:214
 msgid "There's currently nothing to compare. Please select some .edd_get_label_plural. to compare."
 msgstr ""

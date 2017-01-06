@@ -46,7 +46,7 @@ function edd_compare_products_enqueue() {
 		return;
 	}
 
-	if ( is_page( $compare_page ) || ( get_post_type() == 'download' ) ) {
+	if ( is_page( $compare_page ) || ( is_single() ) ) {
 		edd_compare_products_scripts();
 	}
 }

@@ -27,6 +27,12 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 * @since       0.1
 		 */
 		private static $instance;
+		
+		/**
+         * @var         EDD_Compare_Products $plugin_data Holds Plugin Header Info
+         * @since       1.1.2
+         */
+		public $plugin_data;
 
 		/**
 		 * Get active instance
@@ -55,14 +61,35 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 * @return      void
 		 */
 		private function setup_constants() {
-			// Plugin version
-			define( 'EDD_COMPARE_PRODUCTS_VER', '1.1.1' );
-            // Text domain
-            define( 'EDD_Compare_Products_ID', 'edd-compare-products' );
-			// Plugin path
-			define( 'EDD_COMPARE_PRODUCTS_DIR', plugin_dir_path( __FILE__ ) );
-			// Plugin URL
-			define( 'EDD_COMPARE_PRODUCTS_URL', plugin_dir_url( __FILE__ ) );
+			
+			// WP Loads things so weird. I really want this function.
+            if ( ! function_exists( 'get_plugin_data' ) ) {
+                require_once ABSPATH . '/wp-admin/includes/plugin.php';
+            }
+            
+            // Only call this once, accessible always
+            $this->plugin_data = get_plugin_data( __FILE__ );
+            
+            if ( ! defined( 'EDD_Compare_Products_ID' ) ) {
+                // Plugin Text Domain
+                define( 'EDD_Compare_Products_ID', $this->plugin_data['TextDomain'] );
+            }
+
+            if ( ! defined( 'EDD_Compare_Products_VER' ) ) {
+                // Plugin version
+                define( 'EDD_Compare_Products_VER', $this->plugin_data['Version'] );
+            }
+			
+			if ( ! defined( 'EDD_Compare_Products_DIR' ) ) {
+				// Plugin path
+				define( 'EDD_Compare_Products_DIR', plugin_dir_path( __FILE__ ) );
+			}
+			
+			if ( ! defined( 'EDD_Compare_Products_URL' ) ) {
+				// Plugin URL
+				define( 'EDD_Compare_Products_URL', plugin_dir_url( __FILE__ ) );	
+			}
+			
 		}
 
 		/**
@@ -74,10 +101,10 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 */
 		private function includes() {
 			// Include scripts
-			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/scripts.php';
-			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/functions.php';
-			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/shortcodes.php';
-			require_once EDD_COMPARE_PRODUCTS_DIR . 'includes/settings.php';
+			require_once EDD_Compare_Products_DIR . 'includes/scripts.php';
+			require_once EDD_Compare_Products_DIR . 'includes/functions.php';
+			require_once EDD_Compare_Products_DIR . 'includes/shortcodes.php';
+			require_once EDD_Compare_Products_DIR . 'includes/settings.php';
 		}
 
 		/**
@@ -102,10 +129,10 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
             add_action( 'edd_download_after', 'edd_compare_products_add_compare_button_downloads_shortcode' );
             
 			// Add URL container in footer
-			add_action( 'wp_footer', 'edd_compare_products_url' );
+			add_action( 'wp_footer', 'EDD_Compare_Products_URL' );
 			// Handle licensing
 			if ( class_exists( 'EDD_License' ) ) {
-				$license = new EDD_License( __FILE__, 'Compare Products', EDD_COMPARE_PRODUCTS_VER, 'Kyle Maurer' );
+				$license = new EDD_License( __FILE__, 'Compare Products', EDD_Compare_Products_VER, 'Kyle Maurer' );
 			}
 		}
 
@@ -118,7 +145,7 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		 */
 		public function load_textdomain() {
 			// Set filter for language directory
-			$lang_dir = EDD_COMPARE_PRODUCTS_DIR . '/languages/';
+			$lang_dir = EDD_Compare_Products_DIR . '/languages/';
 			$lang_dir = apply_filters( 'edd_compare_products_languages_directory', $lang_dir );
 			// Traditional WordPress plugin locale filter
 			$locale = apply_filters( 'plugin_locale', get_locale(), EDD_Compare_Products_ID );

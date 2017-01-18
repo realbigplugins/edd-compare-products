@@ -134,6 +134,22 @@ function edd_compare_products_shortcode( $atts ) {
                                 <?php endif; ?>
 
                         <?php foreach ( $fields as $field ) :
+		
+								$value = get_post_meta( $download_id, $field['meta_field'], true );
+		
+								/**
+								 * This filter runs for every Meta Key for more global operations
+								 *
+								 * @since 1.1.2
+								 */
+								$value = apply_filters( 'edd_compare_products_display_value', $value, $field['meta_field'] );
+		
+								/**
+								 * This filter runs per-key so that more specific operations may be preformed
+								 *
+								 * @since 1.1.2
+								 */
+								$value = apply_filters( 'edd_compare_products_' . $field['meta_field'] . '_display_value', $value );
 
                                 if ( $field['meta_field'] == 'thumbnail' ) : ?>
 
@@ -155,11 +171,11 @@ function edd_compare_products_shortcode( $atts ) {
                                            $field['meta_field'] == '_edd_download_earnings' ||
                                            $field['meta_field'] == '_edd_download_sales' ) :
         
-                                    $features .= '<li>' . edd_currency_filter( get_post_meta( $download_id, $field['meta_field'], true ) ) . '</li>';
+                                    $features .= '<li>' . edd_currency_filter( $value ) . '</li>';
 
                                 else :
         
-                                    $feature = get_post_meta( $download_id, $field['meta_field'], true );
+                                    $feature = $value;
         
                                     // Ensure that a value is shown
                                     $features .= '<li>' . ( ( $feature !== false && $feature !== '' ) ? $feature : '&nbsp;' ) . '</li>';

@@ -92,14 +92,22 @@ function edd_compare_products_meta_fields_callback( $args ) {
  * @return mixed
  */
 function edd_compare_remove_some_meta_fields( $fields ) {
+	
 	$download = get_posts( 'post_type=download&posts_per_page=1' );
-	$remove   = array(
+	
+	/**
+	 * Allows additional Meta Keys to be removed as needed
+	 *
+	 * @since 1.1.2
+	 */
+	$remove   = apply_filters( 'edd_compare_products_exclude_meta', array(
 		'_edit_lock',
 		'_edit_last',
 		'_thumbnail_id',
 		'_variable_pricing',
 		'_edd_default_price_id',
-	);
+	) );
+	
 	if ( ! empty( $download ) ) {
 		foreach ( $fields as $field ) {
 			$type = get_post_meta( $download[0]->ID, $field, true );
@@ -143,6 +151,13 @@ function edd_compare_products_get_meta_fields() {
 	}
 
 	$fields['thumbnail'] = 'thumbnail';
+	
+	/**
+	 * Allows additional Meta Keys to be added as needed
+	 *
+	 * @since 1.1.2
+	 */
+	$fields = apply_filters( 'edd_compare_products_include_meta', $fields );
 
 	return edd_compare_remove_some_meta_fields( $fields );
 }

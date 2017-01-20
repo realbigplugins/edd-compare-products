@@ -130,6 +130,13 @@ function edd_compare_remove_some_meta_fields( $fields ) {
  * @return mixed
  */
 function edd_compare_products_get_meta_fields() {
+	
+	/**
+	 * Initial Meta Key/Value pairs. This allows the Value to be something human readable
+	 *
+	 * @since 1.1.2
+	 */
+	$fields = apply_filters( 'edd_compare_products_meta', array() );
 
 	global $wpdb;
 	$post_type = 'download';
@@ -145,21 +152,28 @@ function edd_compare_products_get_meta_fields() {
     ";
 	$meta_keys = $wpdb->get_col( $wpdb->prepare( $query, $post_type ) );
 
-	$fields = array();
 	foreach ( $meta_keys as $value ) {
-		$fields[ $value ] = $value;
+		
+		// Only add found Keys not provided by our Filter
+		if ( ! isset( $fields[ $value ] ) ) {
+			$fields[ $value ] = $value;
+		}
+		
 	}
-
-	$fields['thumbnail'] = 'thumbnail';
+	
+	$fields = edd_compare_remove_some_meta_fields( $fields );
+	
+	$fields = apply_filters( 'edd_compare_products_meta_after', $fields );
 	
 	/**
-	 * Allows additional Meta Keys to be added as needed
+	 * Allows additional Meta Keys to be added as needed, regardless of if there's a saved value or not
 	 *
 	 * @since 1.1.2
 	 */
-	$fields = apply_filters( 'edd_compare_products_include_meta', $fields );
+	asort( $fields );
 
-	return edd_compare_remove_some_meta_fields( $fields );
+	return $fields;
+	
 }
 
 /**
@@ -270,4 +284,50 @@ function edd_compare_products_settings( $settings ) {
     }
 
 	return array_merge( $settings, $new_settings );
+}
+
+/**
+ * Localize some expected Keys so that they have a Value that is Human Readable
+ * 
+ * @param		array $fields Meta Keys and an Identifying Value
+ *                                                    
+ * @since		1.1.2
+ * @return		array Meta Keys with Localized Values
+ */
+add_filter( 'edd_compare_products_meta', 'edd_compare_products_localize_meta' );
+function edd_compare_products_localize_meta( $fields ) {
+	
+	$fields['_edd_button_behavior'] = __( 'EDD Button Behavior', EDD_Compare_Products_ID );
+	$fields['_edd_commisions_enabled'] = __( 'EDD Commissions Enabled', EDD_Compare_Products_ID );
+	$fields['_edd_download_earnings'] = sprintf( __( '%s Earnings', EDD_Compare_Products_ID ), edd_get_label_singular() );
+	$fields['_edd_download_limit'] = sprintf( __( '% Limit', EDD_Compare_Products_ID ), edd_get_label_singular() );
+	$fields['_edd_download_sales'] = sprintf( __( '%s Sales', EDD_Compare_Products_ID ), edd_get_label_singular() );
+	$fields['_edd_download_use_git'] = sprintf( __( '%s Grabs File from Git', EDD_Compare_Products_ID ), edd_get_label_singular() );
+	$fields['_edd_external_product_button'] = __( 'External Button Label', EDD_Compare_Products_ID );
+	$fields['_edd_external_product_url'] = __( 'External Button URL', EDD_Compare_Products_ID );
+	$fields['_edd_has_commission'] = __( 'Commission has been Awarded', EDD_Compare_Products_ID );
+	$fields['_edd_mailchimp'] = sprintf( __( 'MailChimp List ID Buyers of a %s are Subscribed to', EDD_Compare_Products_ID ), edd_get_label_singular() );
+	$fields['_edd_readme_location'] = __( 'Readme.txt Location', EDD_Compare_Products_ID );
+	$fields['_edd_readme_meta'] = __( 'Readme Meta', EDD_Compare_Products_ID );
+	$fields['_edd_readme_plugin_added'] = __( 'Readme Plugin Added Same as Publish Date', EDD_Compare_Products_ID );
+	$fields['_edd_readme_plugin_homepage'] = __( 'Readme Plugin Homepage', EDD_Compare_Products_ID );
+	$fields['_edd_readme_plugin_last_updated'] = __( 'Readme Plugin Updated Same as Last Updated Date', EDD_Compare_Products_ID );
+	$fields['_edd_readme_sections'] = __( 'Readme Sections', EDD_Compare_Products_ID );
+	$fields['_edd_sl_changelog'] = __( 'Changelog', EDD_Compare_Products_ID );
+	$fields['_edd_sl_enabled'] = __( 'EDD Software Licensing Enabled', EDD_Compare_Products_ID );
+	$fields['_edd_sl_exp_length'] = __( 'License Length', EDD_Compare_Products_ID );
+	$fields['_edd_sl_exp_unit'] = __( 'License Length Unit', EDD_Compare_Products_ID );
+	$fields['_edd_sl_keys'] = __( 'License Keys', EDD_Compare_Products_ID );
+	$fields['_edd_sl_limit'] = __( 'License Activation Limit', EDD_Compare_Products_ID );
+	$fields['_edd_sl_upgrade_file_key'] = __( 'Upgrade File Key', EDD_Compare_Products_ID );
+	$fields['_edd_sl_version'] = __( 'Software Version', EDD_Compare_Products_ID );
+	$fields['edd_period'] = __( 'Recurring Period', EDD_Compare_Products_ID );
+	$fields['edd_price'] = __( 'Price', EDD_Compare_Products_ID );
+	$fields['edd_product_notes'] = sprintf( __( '%s Notes', EDD_Compare_Products_ID ), edd_get_label_singular() );
+	$fields['edd_recurring'] = __( 'Recurring', EDD_Compare_Products_ID );
+	$fields['edd_sl_download_lifetime'] = __( 'Lifetime', EDD_Compare_Products_ID );
+	$fields['thumbnail'] = __( 'Thumbnail', EDD_Compare_Products_ID );
+	
+	return $fields;
+	
 }

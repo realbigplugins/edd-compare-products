@@ -163,13 +163,13 @@ function edd_compare_products_get_meta_fields() {
 	
 	$fields = edd_compare_remove_some_meta_fields( $fields );
 	
-	$fields = apply_filters( 'edd_compare_products_meta_after', $fields );
-	
 	/**
 	 * Allows additional Meta Keys to be added as needed, regardless of if there's a saved value or not
 	 *
 	 * @since 1.1.2
 	 */
+	$fields = apply_filters( 'edd_compare_products_meta_after', $fields );
+	
 	asort( $fields );
 
 	return $fields;

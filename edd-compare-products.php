@@ -129,7 +129,7 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
             add_action( 'edd_download_after', 'edd_compare_products_add_compare_button_downloads_shortcode' );
             
 			// Add URL container in footer
-			add_action( 'wp_footer', 'EDD_Compare_Products_URL' );
+			add_action( 'wp_footer', 'edd_compare_products_url' );
 			// Handle licensing
 			if ( class_exists( 'EDD_License' ) ) {
 				$license = new EDD_License( __FILE__, 'Compare Products', EDD_Compare_Products_VER, 'Kyle Maurer' );

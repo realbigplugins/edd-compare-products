@@ -103,7 +103,7 @@ function edd_compare_products_get_compare_url() {
  *
  * @since 0.1
  */
-function EDD_Compare_Products_URL() {
+function edd_compare_products_url() {
     
     global $edd_options;
 

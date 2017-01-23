@@ -107,10 +107,16 @@ function edd_compare_products_shortcode( $atts ) {
                         <ul class="edd-compare-products-columns">
 
                     <?php // Meta fields
+		
+					global $post;
                     foreach ( $download_ids as $download_id ) : 
                             
                         $download = edd_get_download( $download_id );
                         $features = '';
+		
+						// Allow Filters to access the global Post object
+						$post = $download;
+						setup_postdata( $download );
         
                         if ( is_object( $download ) ) : ?>
         
@@ -196,7 +202,7 @@ function edd_compare_products_shortcode( $atts ) {
 
                         <?php endif; // If is_object()
 
-                    endforeach; // echo Field for each download_id ?>
+                    endforeach; wp_reset_postdata();// echo Field for each download_id ?>
                             
                         </ul>
                         

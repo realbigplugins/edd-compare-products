@@ -31,6 +31,7 @@ function edd_compare_products_shortcode( $atts ) {
             // We're going to build DOM in an Object Buffer, which helps keep things more readable.
             ob_start(); 
         
+			$all_fields = edd_compare_products_get_meta_fields(); // So we can get localized Labels as a default
             $fields = edd_compare_get_meta_fields();
 
             ?>
@@ -62,7 +63,7 @@ function edd_compare_products_shortcode( $atts ) {
         
                             <div class="top-info">
 
-                                <?php echo ( $field['label'] ) ? $field['label'] : $field['meta_field']; ?>
+                                <?php echo ( $field['label'] ) ? $field['label'] : $all_fields[ $field['meta_field'] ]; ?>
 
                             </div>
                                 
@@ -74,7 +75,7 @@ function edd_compare_products_shortcode( $atts ) {
         
                             if ( $field['meta_field'] == 'thumbnail' ) continue;
         
-                            $list_labels .= '<li>' . ( ( $field['label'] ) ? $field['label'] : $field['meta_field'] ) . '</li>';
+                            $list_labels .= '<li>' . ( ( $field['label'] ) ? $field['label'] : $all_fields[ $field['meta_field'] ] ) . '</li>';
                             
                         endforeach;
                         

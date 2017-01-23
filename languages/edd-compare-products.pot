@@ -38,74 +38,194 @@ msgstr ""
 msgid "Add Field"
 msgstr ""
 
-#: includes/settings.php:113
+#: includes/settings.php:121
 msgid "-- No fields exist --"
 msgstr ""
 
-#: includes/settings.php:188
+#: includes/settings.php:217
 msgid "Compare Products"
 msgstr ""
 
-#: includes/settings.php:206
+#: includes/settings.php:235
 msgid "Compare Products Settings"
 msgstr ""
 
-#: includes/settings.php:207
+#: includes/settings.php:236
 msgid "Configure EDD Compare Products Settings"
 msgstr ""
 
-#: includes/settings.php:212
+#: includes/settings.php:241
 msgid "Default Comparison Page"
 msgstr ""
 
-#: includes/settings.php:213
+#: includes/settings.php:242
 msgid "Which Page contains the [edd_compare_products] shortcode?"
 msgstr ""
 
-#: includes/settings.php:219
+#: includes/settings.php:248
 msgid "Default Downloads"
 msgstr ""
 
-#: includes/settings.php:220
+#: includes/settings.php:249
 msgid "Comma separated list of download IDs."
 msgstr ""
 
-#: includes/settings.php:225
+#: includes/settings.php:254
 msgid "Default Table Style"
 msgstr ""
 
-#: includes/settings.php:228
+#: includes/settings.php:257
 msgid "Horizontal Scroll"
 msgstr ""
 
-#: includes/settings.php:233
+#: includes/settings.php:262
 msgid "Meta fields"
 msgstr ""
 
-#: includes/settings.php:234
+#: includes/settings.php:263
 msgid "Define default meta fields to show in comparison table."
 msgstr ""
 
-#: includes/settings.php:239
+#: includes/settings.php:268
 msgid "Compare Button Text"
 msgstr ""
 
-#: includes/settings.php:240
+#: includes/settings.php:269
 msgid "Default is \"Compare\"."
 msgstr ""
 
-#: includes/settings.php:245
+#: includes/settings.php:274
 msgid "Go Button Text"
 msgstr ""
 
-#: includes/settings.php:246
+#: includes/settings.php:275
 msgid "After someone has selected the items they would like to compare, the buttons display a message. The default is \"Go to Comparison\"."
 msgstr ""
 
-#: includes/shortcodes.php:209
+#: includes/settings.php:300
+msgid "EDD Button Behavior"
+msgstr ""
+
+#: includes/settings.php:301
+msgid "EDD Commissions Enabled"
+msgstr ""
+
+#: includes/settings.php:302
+msgid "%s Earnings"
+msgstr ""
+
+#: includes/settings.php:303
+msgid "% Limit"
+msgstr ""
+
+#: includes/settings.php:304
+msgid "%s Sales"
+msgstr ""
+
+#: includes/settings.php:305
+msgid "%s Grabs File from Git"
+msgstr ""
+
+#: includes/settings.php:306
+msgid "External Button Label"
+msgstr ""
+
+#: includes/settings.php:307
+msgid "External Button URL"
+msgstr ""
+
+#: includes/settings.php:308
+msgid "Commission has been Awarded"
+msgstr ""
+
+#: includes/settings.php:309
+msgid "MailChimp List ID Buyers of a %s are Subscribed to"
+msgstr ""
+
+#: includes/settings.php:310
+msgid "Readme.txt Location"
+msgstr ""
+
+#: includes/settings.php:311
+msgid "Readme Meta"
+msgstr ""
+
+#: includes/settings.php:312
+msgid "Readme Plugin Added Same as Publish Date"
+msgstr ""
+
+#: includes/settings.php:313
+msgid "Readme Plugin Homepage"
+msgstr ""
+
+#: includes/settings.php:314
+msgid "Readme Plugin Updated Same as Last Updated Date"
+msgstr ""
+
+#: includes/settings.php:315
+msgid "Readme Sections"
+msgstr ""
+
+#: includes/settings.php:316
+msgid "Changelog"
+msgstr ""
+
+#: includes/settings.php:317
+msgid "EDD Software Licensing Enabled"
+msgstr ""
+
+#: includes/settings.php:318
+msgid "License Length"
+msgstr ""
+
+#: includes/settings.php:319
+msgid "License Length Unit"
+msgstr ""
+
+#: includes/settings.php:320
+msgid "License Keys"
+msgstr ""
+
+#: includes/settings.php:321
+msgid "License Activation Limit"
+msgstr ""
+
+#: includes/settings.php:322
+msgid "Upgrade File Key"
+msgstr ""
+
+#: includes/settings.php:323
+msgid "Software Version"
+msgstr ""
+
+#: includes/settings.php:324
+msgid "Recurring Period"
+msgstr ""
+
+#: includes/settings.php:325
+msgid "Price"
+msgstr ""
+
+#: includes/settings.php:326
+msgid "%s Notes"
+msgstr ""
+
+#: includes/settings.php:327
+msgid "Recurring"
+msgstr ""
+
+#: includes/settings.php:328
+msgid "Lifetime"
+msgstr ""
+
+#: includes/settings.php:329
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/shortcodes.php:232
 msgid "The .edd_get_label_singular. IDs provided are invalid. Please select some .edd_get_label_plural. to compare."
 msgstr ""
 
-#: includes/shortcodes.php:214
+#: includes/shortcodes.php:237
 msgid "There's currently nothing to compare. Please select some .edd_get_label_plural. to compare."
 msgstr ""

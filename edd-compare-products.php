@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Easy Digital Downloads - Compare Products
-Plugin URI: https://easydigitaldownloads.com/extensions/compare-products
+Plugin URI: https://easydigitaldownloads.com/downloads/compare-products
 Description: Allows helpful product comparison tables to be easily generated.
-Version: 1.1.2
-Author: Kyle Maurer
-Author URI: http://realbigmarketing.com/staff/kyle
+Version: 1.1.3
+Author: Easy Digital Downloads
+Author URI: https://easydigitaldownloads.com
 License: GPL2
 Text Domain: edd-compare-products
 Domain Path: languages
@@ -30,7 +30,7 @@ if ( ! class_exists( 'EDD_Compare_Products' ) ) {
 		
 		/**
          * @var         EDD_Compare_Products $plugin_data Holds Plugin Header Info
-         * @since       1.1.2
+         * @since       1.1.3
          */
 		public $plugin_data;
 

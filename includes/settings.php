@@ -190,9 +190,12 @@ function edd_compare_settings_sanitize_meta_fields( $input ) {
 		return $input;
 	}
 
-	$new_fields = ! empty( $_POST['meta_fields'] ) ? array_values( $_POST['meta_fields'] ) : array();
+	if( isset( $_POST['meta_fields'] ) ) {
 
-	update_option( 'edd_compare_products_meta_fields', $new_fields );
+		$new_fields = ! empty( $_POST['meta_fields'] ) ? array_values( $_POST['meta_fields'] ) : array();
+		update_option( 'edd_compare_products_meta_fields', $new_fields );
+
+	}
 
 	return $input;
 }

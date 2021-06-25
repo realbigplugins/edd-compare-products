@@ -192,7 +192,7 @@ function edd_compare_settings_sanitize_meta_fields( $input ) {
 
 	if( isset( $_POST['meta_fields'] ) ) {
 
-		$new_fields = ! empty( $_POST['meta_fields'] ) ? array_values( $_POST['meta_fields'] ) : array();
+		$new_fields = ! empty( $_POST['meta_fields'] ) ? array_values( map_deep( wp_unslash( $_POST['meta_fields'] ), 'sanitize_text_field' ) ) : array();
 		update_option( 'edd_compare_products_meta_fields', $new_fields );
 
 	}

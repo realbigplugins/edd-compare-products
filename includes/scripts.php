@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function edd_compare_products_admin_scripts( $hook ) {
 	global $edd_settings_page, $post_type;
 	if ( $hook == $edd_settings_page ) {
-		wp_enqueue_script( 'edd_compare_products_admin_js', EDD_Compare_Products_URL . 'assets/js/admin.js' );
-		wp_enqueue_style( 'edd_compare_products_admin_css', EDD_Compare_Products_URL . 'assets/css/admin.css' );
+		wp_enqueue_script( 'edd_compare_products_admin_js', EDD_Compare_Products_URL . 'assets/js/admin.js', array( 'jquery' ), EDD_Compare_Products_VER, true );
+		wp_enqueue_style( 'edd_compare_products_admin_css', EDD_Compare_Products_URL . 'assets/css/admin.css', array(), EDD_Compare_Products_VER );
 	}
 }
 
@@ -28,8 +28,8 @@ add_action( 'admin_enqueue_scripts', 'edd_compare_products_admin_scripts', 100 )
  * @return      void
  */
 function edd_compare_products_scripts() {
-	wp_enqueue_script( 'edd_compare_products_js', EDD_Compare_Products_URL . 'assets/js/scripts.js', array( 'jquery', 'jquery-ui-core', 'jquery-effects-slide' ) );
-	wp_enqueue_style( 'edd_compare_products_css', EDD_Compare_Products_URL . 'assets/css/styles.css' );
+	wp_enqueue_script( 'edd_compare_products_js', EDD_Compare_Products_URL . 'assets/js/scripts.js', array( 'jquery', 'jquery-ui-core', 'jquery-effects-slide' ), EDD_Compare_Products_VER, true );
+	wp_enqueue_style( 'edd_compare_products_css', EDD_Compare_Products_URL . 'assets/css/styles.css', array(), EDD_Compare_Products_VER );
 }
 
 /**
